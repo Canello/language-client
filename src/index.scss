@@ -1,0 +1,93 @@
+/* ---------------------- */
+/* Reset */
+/* ---------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    white-space: pre-line;
+}
+
+body,
+#root {
+    min-height: 100vh;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    border: none;
+    outline: none;
+}
+
+img {
+    display: block;
+    align-self: center;
+}
+
+button {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+/* ---------------------- */
+/* Fonts */
+/* ---------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+    font-family: "Inter", sans-serif;
+}
+
+/* ---------------------- */
+/* Variables */
+/* ---------------------- */
+
+:root {
+    --primary-color-1: #f98c74;
+
+    --secondary-color-1: #1f3246;
+    --secondary-color-2: #2c4c70;
+    --secondary-color-3: #5e8cbb;
+    --secondary-color-4: #b8cfda;
+
+    --neutral-color-1: #99968f;
+    --neutral-color-2: #bab19e;
+    --neutral-color-3: #f9f4e9;
+    --neutral-color-4: #e4e0d7;
+
+    --grey-color-white: #ffffff;
+    --grey-color-1: #ececec;
+    --grey-color-black: #000000;
+
+    --alert-color-1: #e45858;
+}
