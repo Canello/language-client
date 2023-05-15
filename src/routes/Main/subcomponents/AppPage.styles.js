@@ -16,19 +16,13 @@ export const PageWrapper = styled.div`
 export const AudioButtonContainer = styled.div`
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
 `;
 
 export const AudioTip = styled(Tip)`
     position: absolute;
-    right: 72px;
-    max-width: 160px;
-`;
-
-export const Title = styled.h1`
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--secondary-color-1);
+    left: calc(50% - 160px);
+    max-width: 120px;
 `;

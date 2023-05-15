@@ -5,7 +5,6 @@ import {
     AudioButtonContainer,
     AudioTip,
     PageWrapper,
-    Title,
 } from "./AppPage.styles";
 import { AudioButton } from "./AudioButton.component";
 import { ChatBox } from "./ChatBox.component";
@@ -27,7 +26,6 @@ export const AppPage = () => {
             <PageWrapper>
                 <Spacer y={32} />
                 <AudioButtonContainer>
-                    <Title>Talk to me!</Title>
                     <AudioTip isShowing={isRecording}>
                         Clique de novo para terminar o áudio
                     </AudioTip>
