@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Input } from "../../components/Input/Input.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
@@ -10,6 +11,9 @@ import {
     SignInStyled,
     Text,
 } from "./SignUp.styles";
+import { useApi } from "../../hooks/useApi.hook";
+import { UserContext } from "../../contexts/user.context";
+import { signUp } from "../../services/signup.service";
 
 export const SignUp = () => {
     const [name, setName] = useState("");
@@ -18,6 +22,27 @@ export const SignUp = () => {
     const onChangeEmail = (event) => setEmail(event.target.value);
     const [password, setPassword] = useState("");
     const onChangePassword = (event) => setPassword(event.target.value);
+
+    const [submit, data, isLoading, error] = useApi(signUp);
+    const onSubmit = (event) => {
+        event.preventDefault();
+        submit({ name, email, password });
+    };
+
+    const { setUser, setUserToken } = useContext(UserContext);
+
+    const navigate = useNavigate();
+    const goToMain = () => navigate("/");
+    const goToSignIn = () => navigate("/sign-in");
+
+    useEffect(() => {
+        if (!data) return;
+        const { user, token } = data;
+        if (user) setUser(user);
+        if (token) setUserToken(token);
+        console.log(data);
+        goToMain();
+    }, [data]);
 
     return (
         <SignInStyled>
@@ -28,22 +53,23 @@ export const SignUp = () => {
                 <Text>Crie uma conta para começar seu teste grátis.</Text>
                 <Spacer y={24} />
                 <Input label="Nome" value={name} onChange={onChangeName} />
-                <Spacer y={8} />
+                <Spacer y={4} />
                 <Input label="Email" value={email} onChange={onChangeEmail} />
                 <Spacer y={4} />
                 <Input
                     label="Senha"
                     value={password}
                     onChange={onChangePassword}
+                    type="password"
                 />
                 <Spacer y={20} />
-                <SignInButton variant="primary" size="large">
+                <SignInButton variant="primary" size="large" onClick={onSubmit}>
                     Criar conta
                 </SignInButton>
                 <Spacer y={24} />
                 <span>
                     <SignInText>Já tem uma conta?</SignInText>
-                    <SignInLink> Entre</SignInLink>
+                    <SignInLink onClick={goToSignIn}> Entre</SignInLink>
                 </span>
             </SignInForm>
         </SignInStyled>

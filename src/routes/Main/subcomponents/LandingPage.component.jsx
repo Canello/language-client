@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "../../../components/Button/Button.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { HeroSection, MainStyled, Subtitle, Title } from "./LandingPage.styles";
 
 export const LandingPage = () => {
+    const navigate = useNavigate();
+    const goToSignUp = () => navigate("/sign-up");
+
     return (
         <MainStyled>
             <HeroSection>
@@ -14,7 +19,7 @@ export const LandingPage = () => {
                     Sem passar vergonha. Quando e onde você quiser.`}
                 </Subtitle>
                 <Spacer y={32} />
-                <Button variant="primary" size="large">
+                <Button variant="primary" size="large" onClick={goToSignUp}>
                     Teste grátis (sem colocar cartão)
                 </Button>
             </HeroSection>

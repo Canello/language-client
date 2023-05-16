@@ -18,7 +18,7 @@ export const InputStyled = styled.input`
 
 export const Label = styled.label`
     position: absolute;
-    font-size: 14px;
+    font-size: ${({ isShifted }) => (isShifted ? "12px" : "14px")};
     font-weight: normal;
     color: var(--neutral-color-1);
     padding-left: ${({ isShifted }) => (isShifted ? "0" : "16px")};

@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { AppPage } from "./subcomponents/AppPage.component";
 import { LandingPage } from "./subcomponents/LandingPage.component";
+import { UserContext } from "../../contexts/user.context";
 
 export const Main = () => {
-    const isLoggedIn = true;
+    const { user } = useContext(UserContext);
 
-    return isLoggedIn ? <AppPage /> : <LandingPage />;
+    return user ? <AppPage /> : <LandingPage />;
 };

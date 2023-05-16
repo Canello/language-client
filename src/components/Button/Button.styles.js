@@ -15,7 +15,6 @@ export const BaseButton = styled.button`
     border-radius: 4px;
     font-size: 14px;
     font-weight: bold;
-    color: var(--grey-color-white);
 
     &:hover {
         opacity: 0.8;
@@ -24,4 +23,10 @@ export const BaseButton = styled.button`
 
 export const PrimaryButton = styled(BaseButton)`
     background-color: var(--secondary-color-2);
+    color: var(--grey-color-white);
+`;
+
+export const SecondaryButton = styled(BaseButton)`
+    border: 1px solid var(--secondary-color-2);
+    color: var(--secondary-color-1);
 `;

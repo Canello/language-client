@@ -36,13 +36,17 @@ export const AppPage = () => {
                     />
                 </AudioButtonContainer>
                 <Spacer y={16} />
-                <ChatBox label="Você" isLoading={isLoadingQuery} />
+                <ChatBox label="Você" isLoading={isLoadingQuery}>
+                    {query}
+                </ChatBox>
                 <Spacer y={24} />
                 <ChatBox
                     label="Caitlyn"
                     isLoading={isLoadingResponse}
                     isActive={isSpeaking}
-                />
+                >
+                    {response}
+                </ChatBox>
             </PageWrapper>
         </AppPageStyled>
     );
