@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/Button/Button.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { HeroSection, MainStyled, Subtitle, Title } from "./LandingPage.styles";
+import { ROUTES } from "../../../utils/constants";
 
 export const LandingPage = () => {
     const navigate = useNavigate();
-    const goToSignUp = () => navigate("/sign-up");
+    const goToSignUp = () => navigate(ROUTES.signUp);
 
     return (
         <MainStyled>

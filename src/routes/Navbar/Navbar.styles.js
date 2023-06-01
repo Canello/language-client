@@ -4,7 +4,7 @@ export const NavbarStyled = styled.nav`
     position: fixed;
     display: flex;
     justify-content: center;
-    height: 52px;
+    height: var(--navbar-height);
     width: 100vw;
     padding: 0 32px;
     background-color: #f9f4e930;
@@ -17,5 +17,16 @@ export const NavbarWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     flex: 1;
-    max-width: 720px;
+    max-width: 1000px;
+`;
+
+export const ProfileLink = styled.span`
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--neutral-color-1);
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 `;

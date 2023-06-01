@@ -22,7 +22,7 @@ export const AppPage = () => {
     } = useConversation();
 
     return (
-        <AppPageStyled>
+        <AppPageStyled className="page">
             <PageWrapper>
                 <Spacer y={32} />
                 <AudioButtonContainer>

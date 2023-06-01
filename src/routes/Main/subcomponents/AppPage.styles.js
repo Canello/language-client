@@ -4,8 +4,6 @@ import { Tip } from "../../../components/Tip/Tip.component";
 export const AppPageStyled = styled.div`
     display: flex;
     justify-content: center;
-    padding: 0 32px;
-    padding-top: 52px;
 `;
 
 export const PageWrapper = styled.div`

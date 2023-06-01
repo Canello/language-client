@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Input } from "../../components/Input/Input.component";
@@ -12,38 +12,37 @@ import {
     SignInStyled,
     Text,
 } from "./SignIn.styles";
+import { useInput } from "../../hooks/useInput.hook";
 import { useApi } from "../../hooks/useApi.hook";
-import { signIn } from "../../services/signin.service";
+import { signIn } from "../../services/auth.service";
 import { UserContext } from "../../contexts/user.context";
+import { ROUTES } from "../../utils/constants";
 
 export const SignIn = () => {
-    const [email, setEmail] = useState("");
-    const onChangeEmail = (event) => setEmail(event.target.value);
-    const [password, setPassword] = useState("");
-    const onChangePassword = (event) => setPassword(event.target.value);
+    const { setUser, setUserToken } = useContext(UserContext);
 
-    const [submit, data, isLoading, error] = useApi(signIn);
+    const [email, onChangeEmail] = useInput();
+    const [password, onChangePassword] = useInput();
+
+    const navigate = useNavigate();
+    const goToMain = () => navigate(ROUTES.main);
+    const goToSignUp = () => navigate(ROUTES.signUp);
+
+    const onSignIn = (data) => {
+        const { user, token } = data;
+        if (user) setUser(user);
+        if (token) setUserToken(token);
+        goToMain();
+    };
+
+    const [submit] = useApi(signIn, { onSuccess: onSignIn });
     const onSubmit = (event) => {
         event.preventDefault();
         submit({ email, password });
     };
 
-    const { setUser, setUserToken } = useContext(UserContext);
-
-    const navigate = useNavigate();
-    const goToMain = () => navigate("/");
-    const goToSignUp = () => navigate("/sign-up");
-
-    useEffect(() => {
-        if (!data) return;
-        const { user, token } = data;
-        if (user) setUser(user);
-        if (token) setUserToken(token);
-        goToMain();
-    }, [data]);
-
     return (
-        <SignInStyled>
+        <SignInStyled className="page">
             <SignInForm>
                 <Spacer y={32} />
                 <h6 onClick={goToMain}>logo</h6>

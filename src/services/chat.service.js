@@ -1,7 +1,7 @@
-import { apiAddress } from "../utils/constants";
+import { API_ADDRESS } from "../utils/constants";
 
 export const chat = async (messages, userToken) => {
-    let res = await fetch(apiAddress + "/chat", {
+    let res = await fetch(API_ADDRESS + "/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

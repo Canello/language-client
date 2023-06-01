@@ -1,0 +1,12 @@
+export const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    const day = ensureTwoDigits(date.getDay());
+    const month = ensureTwoDigits(date.getMonth() + 1);
+    const year = String(date.getFullYear());
+
+    return day + "/" + month + "/" + year;
+};
+
+const ensureTwoDigits = (num) =>
+    String(num).length === 1 ? "0" + num : String(num);

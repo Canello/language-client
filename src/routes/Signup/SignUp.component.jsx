@@ -1,8 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { Input } from "../../components/Input/Input.component";
-import { Spacer } from "../../components/Spacer/Spacer.component";
 import {
     SignInLink,
     SignInText,
@@ -11,41 +8,40 @@ import {
     SignInStyled,
     Text,
 } from "./SignUp.styles";
+import { Input } from "../../components/Input/Input.component";
+import { Spacer } from "../../components/Spacer/Spacer.component";
 import { useApi } from "../../hooks/useApi.hook";
 import { UserContext } from "../../contexts/user.context";
-import { signUp } from "../../services/signup.service";
+import { signUp } from "../../services/auth.service";
+import { ROUTES } from "../../utils/constants";
+import { useInput } from "../../hooks/useInput.hook";
 
 export const SignUp = () => {
-    const [name, setName] = useState("");
-    const onChangeName = (event) => setName(event.target.value);
-    const [email, setEmail] = useState("");
-    const onChangeEmail = (event) => setEmail(event.target.value);
-    const [password, setPassword] = useState("");
-    const onChangePassword = (event) => setPassword(event.target.value);
+    const { setUser, setUserToken } = useContext(UserContext);
 
-    const [submit, data, isLoading, error] = useApi(signUp);
+    const [name, onChangeName] = useInput();
+    const [email, onChangeEmail] = useInput();
+    const [password, onChangePassword] = useInput();
+
+    const navigate = useNavigate();
+    const goToMain = () => navigate(ROUTES.main);
+    const goToSignIn = () => navigate(ROUTES.signIn);
+
+    const onSignUp = (data) => {
+        const { user, token } = data;
+        if (user) setUser(user);
+        if (token) setUserToken(token);
+        goToMain();
+    };
+
+    const [submit] = useApi(signUp, { onSuccess: onSignUp });
     const onSubmit = (event) => {
         event.preventDefault();
         submit({ name, email, password });
     };
 
-    const { setUser, setUserToken } = useContext(UserContext);
-
-    const navigate = useNavigate();
-    const goToMain = () => navigate("/");
-    const goToSignIn = () => navigate("/sign-in");
-
-    useEffect(() => {
-        if (!data) return;
-        const { user, token } = data;
-        if (user) setUser(user);
-        if (token) setUserToken(token);
-        console.log(data);
-        goToMain();
-    }, [data]);
-
     return (
-        <SignInStyled>
+        <SignInStyled className="page">
             <SignInForm>
                 <Spacer y={32} />
                 <h6>logo</h6>

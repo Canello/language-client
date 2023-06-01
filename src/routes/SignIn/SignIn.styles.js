@@ -5,7 +5,6 @@ import { Button } from "../../components/Button/Button.component";
 export const SignInStyled = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 0 32px;
     padding-top: 52px;

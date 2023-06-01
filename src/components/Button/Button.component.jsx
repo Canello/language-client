@@ -1,4 +1,8 @@
-import { PrimaryButton, SecondaryButton } from "./Button.styles";
+import {
+    PrimaryButton,
+    SecondaryButton,
+    TertiaryButton,
+} from "./Button.styles";
 
 export const Button = ({
     variant = "primary",
@@ -18,6 +22,12 @@ export const Button = ({
                 <SecondaryButton size={size} {...otherProps}>
                     {children}
                 </SecondaryButton>
+            );
+        case "tertiary":
+            return (
+                <TertiaryButton size={size} {...otherProps}>
+                    {children}
+                </TertiaryButton>
             );
         default:
             return (

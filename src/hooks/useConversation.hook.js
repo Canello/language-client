@@ -17,13 +17,13 @@ export const useConversation = () => {
         transcription,
         isLoadingTranscription,
         errorTranscription,
-    ] = useApi(transcribe, "");
+    ] = useApi(transcribe, { initialData: "" });
     const [
         fetchGptResponse,
         gptResponse,
         isLoadingGptResponse,
         errorGptResponse,
-    ] = useApi(chat, "");
+    ] = useApi(chat, { initialData: "" });
 
     // Transcribe audio to text everytime a new audio is recorded
     useEffect(() => {

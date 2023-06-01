@@ -73,6 +73,7 @@ button {
 /* ---------------------- */
 
 :root {
+    /* Colors */
     --primary-color-1: #f98c74;
 
     --secondary-color-1: #1f3246;
@@ -90,4 +91,17 @@ button {
     --grey-color-black: #000000;
 
     --alert-color-1: #e45858;
+
+    /* Navbar */
+    --navbar-height: 52px;
+}
+
+/* ---------------------- */
+/* Page */
+/* ---------------------- */
+
+.page {
+    padding: var(--navbar-height) 32px 0 32px;
+    width: 100%;
+    max-width: 1000px;
 }

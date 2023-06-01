@@ -4,6 +4,7 @@ export const MainStyled = styled.div``;
 
 export const HeroSection = styled.section`
     height: 100vh;
+    width: 100vw;
     padding: 0 32px;
     padding-top: 52px;
     background-image: url("https://images.unsplash.com/photo-1633113216164-6469037eafa5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");

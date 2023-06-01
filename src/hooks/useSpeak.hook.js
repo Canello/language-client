@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useVoice } from "./useVoice.hook";
-import { speak } from "../utils/speak";
+import { speak } from "../utils/functions/speak";
 
 export const useSpeak = () => {
     const voice = useVoice();
