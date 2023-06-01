@@ -1,13 +1,15 @@
-import { Spacer } from "../../../components/Spacer/Spacer.component";
-import { useConversation } from "../../../hooks/useConversation.hook";
+import { useState } from "react";
 import {
     AppPageStyled,
     AudioButtonContainer,
     AudioTip,
     PageWrapper,
 } from "./AppPage.styles";
+import { Spacer } from "../../../components/Spacer/Spacer.component";
+import { useConversation } from "../../../hooks/useConversation.hook";
 import { AudioButton } from "./AudioButton.component";
 import { ChatBox } from "./ChatBox.component";
+import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
 
 export const AppPage = () => {
     const {
@@ -20,6 +22,10 @@ export const AppPage = () => {
         isLoadingResponse,
         isSpeaking,
     } = useConversation();
+
+    const [isShowingModal, setIsShowingModal] = useState(true);
+    const showModal = () => setIsShowingModal(true);
+    const closeModal = () => setIsShowingModal(false);
 
     return (
         <AppPageStyled className="page">
@@ -48,6 +54,10 @@ export const AppPage = () => {
                     {response}
                 </ChatBox>
             </PageWrapper>
+            <FreeTestIsOverModal
+                isShowing={isShowingModal}
+                onClose={closeModal}
+            />
         </AppPageStyled>
     );
 };
