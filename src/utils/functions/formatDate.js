@@ -1,7 +1,7 @@
 export const formatDate = (dateString) => {
     const date = new Date(dateString);
 
-    const day = ensureTwoDigits(date.getDay());
+    const day = ensureTwoDigits(date.getDate());
     const month = ensureTwoDigits(date.getMonth() + 1);
     const year = String(date.getFullYear());
 

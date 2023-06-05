@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
     const [userToken, setUserToken] = useState(null);
 
     const setUpdatedUser = (updatedUser) => setUser(updatedUser);
+
     const [fetchUser] = useApi(getUser(userToken), {
         onSuccess: setUpdatedUser,
     });
