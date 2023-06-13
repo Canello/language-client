@@ -7,6 +7,8 @@ import { SignIn } from "./routes/SignIn/SignIn.component";
 import { SignUp } from "./routes/Signup/SignUp.component";
 import { Profile } from "./routes/Profile/Profile.component";
 import { ROUTES } from "./utils/constants";
+import { ResetPassword } from "./routes/ResetPassword/ResetPassword.component";
+import { PasswordForgotten } from "./routes/PasswordForgotten/PasswordForgotten.component";
 
 function App() {
     return (
@@ -17,6 +19,14 @@ function App() {
                     <Route path={ROUTES.signIn} element={<SignIn />} />
                     <Route path={ROUTES.signUp} element={<SignUp />} />
                     <Route path={ROUTES.profile} element={<Profile />} />
+                    <Route
+                        path={ROUTES.resetPassword}
+                        element={<ResetPassword />}
+                    />
+                    <Route
+                        path={ROUTES.passwordForgotten}
+                        element={<PasswordForgotten />}
+                    />
                 </Route>
             </Routes>
         </AppStyled>

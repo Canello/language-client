@@ -13,7 +13,7 @@ export const InputStyled = styled.input`
     height: 36px;
     width: 100%;
     padding: 0 0 0 16px;
-    color: var(--neutral-color-1);
+    color: var(--grey-color-2);
 `;
 
 export const Label = styled.label`

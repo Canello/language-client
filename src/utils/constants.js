@@ -9,4 +9,6 @@ export const ROUTES = {
     profile: "/profile",
     signIn: "/sign-in",
     signUp: "/sign-up",
+    resetPassword: "/reset-password/:id",
+    passwordForgotten: "/password-forgotten",
 };

@@ -27,6 +27,7 @@ export const SignIn = () => {
     const navigate = useNavigate();
     const goToMain = () => navigate(ROUTES.main);
     const goToSignUp = () => navigate(ROUTES.signUp);
+    const goToPasswordForgotten = () => navigate(ROUTES.passwordForgotten);
 
     const onSignIn = (data) => {
         const { user, token } = data;
@@ -45,7 +46,7 @@ export const SignIn = () => {
         <SignInStyled className="page">
             <SignInForm>
                 <Spacer y={32} />
-                <h6 onClick={goToMain}>logo</h6>
+                <h6>logo</h6>
                 <Spacer y={8} />
                 <Text>Entre para começar seu teste grátis.</Text>
                 <Spacer y={24} />
@@ -62,7 +63,9 @@ export const SignIn = () => {
                     Entrar
                 </SignInButton>
                 <Spacer y={24} />
-                <ForgetPassword>Esqueceu a senha?</ForgetPassword>
+                <ForgetPassword onClick={goToPasswordForgotten}>
+                    Esqueceu a senha?
+                </ForgetPassword>
                 <Spacer y={16} />
                 <span>
                     <SignUpText>Não tem uma conta?</SignUpText>

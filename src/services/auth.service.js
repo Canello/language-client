@@ -34,3 +34,29 @@ export const getUser = (userToken) => async () => {
 
     return res.data?.user;
 };
+
+export const requestPasswordResetLink = async (email) => {
+    let res = await fetch(API_ADDRESS + "/auth/reset-link", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+    });
+    res = await res.json();
+
+    return res.data.link;
+};
+
+export const changePassword = async (resetToken, newPassword) => {
+    let res = await fetch(API_ADDRESS + "/auth/change-password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: resetToken, newPassword }),
+    });
+    res = await res.json();
+
+    return res.status;
+};

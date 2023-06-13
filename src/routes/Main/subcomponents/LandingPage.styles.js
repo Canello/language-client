@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const MainStyled = styled.div``;
 
 export const HeroSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     padding: 0 32px;
@@ -10,6 +13,11 @@ export const HeroSection = styled.section`
     background-image: url("https://images.unsplash.com/photo-1633113216164-6469037eafa5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80");
     background-size: cover;
     background-position: center;
+`;
+
+export const HeroWrapper = styled.div`
+    width: 100%;
+    max-width: 1000px;
 `;
 
 export const Title = styled.h1`
