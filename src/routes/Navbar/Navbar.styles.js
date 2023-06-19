@@ -10,6 +10,7 @@ export const NavbarStyled = styled.nav`
     background-color: #f9f4e930;
     backdrop-filter: blur(5px);
     border-bottom: 1px solid #e4e0d7;
+    z-index: 9;
 `;
 
 export const NavbarWrapper = styled.div`

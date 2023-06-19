@@ -4,7 +4,6 @@ export const MainStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 64px;
 `;
 
 export const HeroSection = styled.section`

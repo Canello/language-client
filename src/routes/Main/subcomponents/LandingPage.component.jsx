@@ -81,13 +81,13 @@ export const LandingPage = () => {
                     </FeatureCardsContainer>
                 </Wrapper>
             </FeaturesSection>
-            <Spacer y={64} />
+            <Spacer y={88} />
             <IsItForYouSection>
                 <Wrapper>
                     <SectionTitle>
-                        A Caitlyn é a escolha certa para você?
+                        Será que Caitlyn é a escolha certa para você?
                     </SectionTitle>
-                    <Spacer y={32} />
+                    <Spacer y={24} />
                     <IsItForYouDescription>
                         <FirstWord>Você</FirstWord> consegue ler textos, mas se
                         sente inseguro para conversar.

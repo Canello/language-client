@@ -5,6 +5,7 @@ import { Button } from "../../components/Button/Button.component";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { ROUTES } from "../../utils/constants";
+import { Footer } from "../../components/Footer/Footer.component";
 
 export const Navbar = () => {
     const { user } = useContext(UserContext);
@@ -35,6 +36,7 @@ export const Navbar = () => {
                 </NavbarWrapper>
             </NavbarStyled>
             <Outlet />
+            <Footer />
         </>
     );
 };
