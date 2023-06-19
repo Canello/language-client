@@ -4,6 +4,8 @@ export const MainStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
+    overflow: hidden;
 `;
 
 export const HeroSection = styled.section`
@@ -45,7 +47,7 @@ export const SeeMore = styled.div`
     justify-content: center;
     padding: 24px;
     right: calc(50% - 60px);
-    bottom: 64px;
+    bottom: 32px;
     border-radius: 32px;
     background-color: #1f324630;
     backdrop-filter: blur(5px);
