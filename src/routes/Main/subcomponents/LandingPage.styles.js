@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const MainStyled = styled.div``;
+export const MainStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 64px;
+`;
 
 export const HeroSection = styled.section`
     display: flex;
@@ -15,7 +20,7 @@ export const HeroSection = styled.section`
     background-position: center;
 `;
 
-export const HeroWrapper = styled.div`
+export const Wrapper = styled.div`
     width: 100%;
     max-width: 1000px;
 `;
@@ -30,4 +35,47 @@ export const Subtitle = styled.h2`
     font-size: 16px;
     font-weight: normal;
     color: var(--neutral-color-4);
+`;
+
+export const FeaturesSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 32px;
+`;
+
+export const FeatureCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+`;
+
+export const IsItForYouSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 32px;
+`;
+
+export const SectionTitle = styled.h3`
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary-color-2);
+`;
+
+export const IsItForYouDescription = styled.span`
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--neutral-color-1);
+`;
+
+export const FirstWord = styled.span`
+    font-weight: 700;
+    color: var(--secondary-color-2);
 `;
