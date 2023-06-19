@@ -7,6 +7,7 @@ export const MainStyled = styled.div`
 `;
 
 export const HeroSection = styled.section`
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,6 +36,28 @@ export const Subtitle = styled.h2`
     font-weight: normal;
     color: var(--neutral-color-4);
 `;
+
+export const SeeMore = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    right: calc(50% - 60px);
+    bottom: 64px;
+    border-radius: 32px;
+    background-color: #1f324630;
+    backdrop-filter: blur(5px);
+`;
+
+export const SeeMoreText = styled.span`
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--grey-color-white);
+`;
+
+export const Arrow = styled.img``;
 
 export const FeaturesSection = styled.section`
     display: flex;

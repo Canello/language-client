@@ -11,6 +11,9 @@ import {
     SectionTitle,
     IsItForYouDescription,
     FirstWord,
+    Arrow,
+    SeeMore,
+    SeeMoreText,
 } from "./LandingPage.styles";
 import { Button } from "../../../components/Button/Button.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
@@ -20,6 +23,7 @@ import TelescopeIcon from "../../../assets/telescope.svg";
 import ClassIcon from "../../../assets/class.svg";
 import ClockIcon from "../../../assets/clock.svg";
 import DisabledEyeIcon from "../../../assets/disabled-eye.svg";
+import HeroArrow from "../../../assets/landing-page-arrow.svg";
 
 const FEATURES = [
     {
@@ -71,6 +75,11 @@ export const LandingPage = () => {
                     <Button variant="primary" size="large" onClick={goToSignUp}>
                         Teste grátis (sem colocar cartão)
                     </Button>
+                    <SeeMore>
+                        <SeeMoreText>Saiba mais</SeeMoreText>
+                        <Spacer y={8} />
+                        <Arrow src={HeroArrow} />
+                    </SeeMore>
                 </Wrapper>
             </HeroSection>
             <Spacer y={32} />
