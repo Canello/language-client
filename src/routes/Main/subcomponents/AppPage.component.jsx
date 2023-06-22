@@ -10,8 +10,14 @@ import { useConversation } from "../../../hooks/useConversation.hook";
 import { AudioButton } from "./AudioButton.component";
 import { ChatBox } from "./ChatBox.component";
 import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
+import { usePayment } from "../../../hooks/usePayment.hook";
 
 export const AppPage = () => {
+    const [isShowingModal, setIsShowingModal] = useState(false);
+    const showModal = () => setIsShowingModal(true);
+    const closeModal = () => setIsShowingModal(false);
+    const onCreditsEnd = () => showModal();
+
     const {
         startRecording,
         stopRecording,
@@ -21,11 +27,9 @@ export const AppPage = () => {
         response,
         isLoadingResponse,
         isSpeaking,
-    } = useConversation();
+    } = useConversation(onCreditsEnd);
 
-    const [isShowingModal, setIsShowingModal] = useState(true);
-    const showModal = () => setIsShowingModal(true);
-    const closeModal = () => setIsShowingModal(false);
+    const openPayment = usePayment();
 
     return (
         <AppPageStyled className="page">
@@ -57,6 +61,7 @@ export const AppPage = () => {
             <FreeTestIsOverModal
                 isShowing={isShowingModal}
                 onClose={closeModal}
+                openPayment={openPayment}
             />
         </AppPageStyled>
     );

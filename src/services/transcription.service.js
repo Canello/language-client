@@ -1,3 +1,4 @@
+import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
 export const transcribe = async (audioBlob, userToken) => {
@@ -12,6 +13,7 @@ export const transcribe = async (audioBlob, userToken) => {
         body: formData,
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data.transcription;
 };

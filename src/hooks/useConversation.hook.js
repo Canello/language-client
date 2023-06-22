@@ -6,8 +6,12 @@ import { useApi } from "./useApi.hook";
 import { transcribe } from "../services/transcription.service";
 import { chat } from "../services/chat.service";
 
-export const useConversation = () => {
+export const useConversation = (onCreditsEnd) => {
     const messages = useRef([]);
+
+    const onError = (error) => {
+        if (error.type === "no_credits") onCreditsEnd();
+    };
 
     const { speak, stopSpeaking, isSpeaking } = useSpeak();
     const { startRecording, stopRecording, isRecording, audioBlob } =
@@ -17,13 +21,13 @@ export const useConversation = () => {
         transcription,
         isLoadingTranscription,
         errorTranscription,
-    ] = useApi(transcribe, { initialData: "" });
+    ] = useApi(transcribe, { initialData: "", onError });
     const [
         fetchGptResponse,
         gptResponse,
         isLoadingGptResponse,
         errorGptResponse,
-    ] = useApi(chat, { initialData: "" });
+    ] = useApi(chat, { initialData: "", onError });
 
     // Transcribe audio to text everytime a new audio is recorded
     useEffect(() => {

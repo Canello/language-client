@@ -1,3 +1,4 @@
+import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
 export const chat = async (messages, userToken) => {
@@ -12,6 +13,7 @@ export const chat = async (messages, userToken) => {
         }),
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data.reply;
 };

@@ -1,3 +1,4 @@
+import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
 export const signIn = async ({ email, password }) => {
@@ -7,6 +8,7 @@ export const signIn = async ({ email, password }) => {
         body: JSON.stringify({ email, password }),
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data;
 };
@@ -20,6 +22,7 @@ export const signUp = async ({ name, email, password }) => {
         body: JSON.stringify({ fullName: name, email, password }),
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data;
 };
@@ -31,6 +34,7 @@ export const getUser = (userToken) => async () => {
         },
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data?.user;
 };
@@ -44,6 +48,7 @@ export const requestPasswordResetLink = async (email) => {
         body: JSON.stringify({ email }),
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data.link;
 };
@@ -57,6 +62,7 @@ export const changePassword = async (resetToken, newPassword) => {
         body: JSON.stringify({ token: resetToken, newPassword }),
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.status;
 };

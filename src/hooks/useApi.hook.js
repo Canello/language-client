@@ -19,10 +19,7 @@ export const useApi = (service, config = {}) => {
     const fetchData = async (...args) => {
         try {
             setLoading(true);
-            const resData =
-                args.length > 0
-                    ? await service(...args, userToken)
-                    : await service(userToken);
+            const resData = await service(...args, userToken);
             setData(resData);
             onSuccess(resData);
         } catch (error) {

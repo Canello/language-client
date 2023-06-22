@@ -1,3 +1,4 @@
+import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
 export const getPaymentLink = async (userToken) => {
@@ -8,6 +9,7 @@ export const getPaymentLink = async (userToken) => {
         },
     });
     res = await res.json();
+    if (res.error) throw new CustomError(res.error);
 
     return res.data.init_point;
 };
