@@ -14,6 +14,7 @@ import {
     Arrow,
     SeeMore,
     SeeMoreText,
+    CallToAction,
 } from "./LandingPage.styles";
 import { Button } from "../../../components/Button/Button.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
@@ -64,11 +65,10 @@ export const LandingPage = () => {
         <MainStyled>
             <HeroSection>
                 <Wrapper>
-                    <Spacer y={32} />
-                    <Title>Pratique seu inglês conversando com a Caitlyn</Title>
+                    <Title>Pratique inglês conversando com a Caitlyn</Title>
                     <Spacer y={8} />
                     <Subtitle>
-                        {`Converse por áudio com a IA como se estivesse falando com um professor de verdade.
+                        {`Converse por áudio com a inteligência artificial como se estivesse falando com um professor de verdade.
                     Sem passar vergonha. Quando e onde você quiser.`}
                     </Subtitle>
                     <Spacer y={32} />
@@ -82,40 +82,39 @@ export const LandingPage = () => {
                     </SeeMore>
                 </Wrapper>
             </HeroSection>
-            <Spacer y={32} />
+            <Spacer y={48} />
             <FeaturesSection>
-                <Wrapper>
-                    <FeatureCardsContainer>
-                        {featureCards}
-                    </FeatureCardsContainer>
-                </Wrapper>
+                <SectionTitle>Por que a Caitlyn?</SectionTitle>
+                <Spacer y={24} />
+                <FeatureCardsContainer>{featureCards}</FeatureCardsContainer>
             </FeaturesSection>
             <Spacer y={88} />
             <IsItForYouSection>
-                <Wrapper>
-                    <SectionTitle>
-                        Será que Caitlyn é a escolha certa para você?
-                    </SectionTitle>
-                    <Spacer y={24} />
-                    <IsItForYouDescription>
-                        <FirstWord>Você</FirstWord> consegue ler textos, mas se
-                        sente inseguro para conversar.
-                        <br />
-                        <br />
-                        <FirstWord>Você</FirstWord> até fala inglês, mas às
-                        vezes erra a estrutura da frase ou comete erros de
-                        vocabulário.
-                        <br />
-                        <br />
-                        <FirstWord>Você</FirstWord> quer uma opção mais
-                        acessível que professores americanos, mas que dê
-                        resultados comparáveis.
-                    </IsItForYouDescription>
-                    <Spacer y={32} />
-                    <Button variant="primary" size="large" onClick={goToSignUp}>
-                        Teste grátis (sem colocar cartão)
-                    </Button>
-                </Wrapper>
+                <SectionTitle>
+                    Será que Caitlyn é a escolha certa para você?
+                </SectionTitle>
+                <Spacer y={24} />
+                <IsItForYouDescription>
+                    <FirstWord>Você</FirstWord> consegue ler textos, mas se
+                    sente inseguro para conversar.
+                    <br />
+                    <br />
+                    <FirstWord>Você</FirstWord> até fala inglês, mas às vezes
+                    erra a estrutura da frase ou comete erros de vocabulário.
+                    <br />
+                    <br />
+                    <FirstWord>Você</FirstWord> quer uma opção mais acessível
+                    que professores americanos, mas que dê resultados
+                    comparáveis.
+                </IsItForYouDescription>
+                <Spacer y={32} />
+                <CallToAction
+                    variant="primary"
+                    size="large"
+                    onClick={goToSignUp}
+                >
+                    Teste grátis (sem colocar cartão)
+                </CallToAction>
             </IsItForYouSection>
         </MainStyled>
     );

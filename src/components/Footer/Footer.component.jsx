@@ -26,7 +26,7 @@ export const Footer = () => {
             <Container>
                 <h6>logo</h6>
                 <Spacer x={8} />
-                <LogoText>Caitlyn @ 2023</LogoText>
+                <LogoText>Caitlyn - 2023</LogoText>
             </Container>
             <ContactModal isShowing={isOpen} onClose={closeModal} />
         </FooterStyled>

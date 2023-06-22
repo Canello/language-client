@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../../components/Button/Button.component";
 
 export const MainStyled = styled.div`
     display: flex;
@@ -28,9 +29,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: 24px;
+    margin-top: 140px;
+    font-size: 32px;
     font-weight: bold;
     color: var(--grey-color-white);
+
+    @media screen and (max-width: 500px) {
+        margin-top: 32px;
+    }
 `;
 
 export const Subtitle = styled.h2`
@@ -64,7 +70,7 @@ export const Arrow = styled.img``;
 export const FeaturesSection = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     width: 100%;
     max-width: 1000px;
     padding: 0 32px;
@@ -73,15 +79,18 @@ export const FeaturesSection = styled.section`
 export const FeatureCardsContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
+
+    @media screen and (max-width: 700px) {
+        justify-content: center;
+    }
 `;
 
 export const IsItForYouSection = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     max-width: 1000px;
     padding: 0 32px;
@@ -102,4 +111,8 @@ export const IsItForYouDescription = styled.span`
 export const FirstWord = styled.span`
     font-weight: 700;
     color: var(--secondary-color-2);
+`;
+
+export const CallToAction = styled(Button)`
+    width: auto;
 `;

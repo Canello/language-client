@@ -6,11 +6,11 @@ import { UserContext } from "../../contexts/user.context";
 import { Button } from "../../components/Button/Button.component";
 import { ROUTES } from "../../utils/constants";
 import { formatDate } from "../../utils/functions/formatDate";
-import { useApi } from "../../hooks/useApi.hook";
-import { getPaymentLink } from "../../services/mercado-pago.service";
+import { usePayment } from "../../hooks/usePayment.hook";
 
 export const Profile = () => {
     const { user, logout } = useContext(UserContext);
+    const openPayment = usePayment();
 
     const navigate = useNavigate();
     const goToMain = () => navigate(ROUTES.main);
@@ -19,13 +19,6 @@ export const Profile = () => {
         logout();
         goToMain();
     };
-
-    const openPaymentTab = (paymentLink) =>
-        window.open(paymentLink, "_blank").focus();
-
-    const [fetchGetPaymentLink] = useApi(getPaymentLink, {
-        onSuccess: openPaymentTab,
-    });
 
     if (!user) return null;
     return (
@@ -45,10 +38,7 @@ export const Profile = () => {
             ) : (
                 <>
                     <Spacer y={16} />
-                    <Button
-                        variant="primary"
-                        onClick={() => fetchGetPaymentLink()}
-                    >
+                    <Button variant="primary" onClick={openPayment}>
                         Comprar um mês de acesso
                     </Button>
                 </>
