@@ -23,3 +23,10 @@ export const Text = styled.h2`
 export const ResetPasswordButton = styled(Button)`
     width: 100%;
 `;
+
+export const AlertText = styled.span`
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--alert-color-1);
+    text-align: center;
+`;

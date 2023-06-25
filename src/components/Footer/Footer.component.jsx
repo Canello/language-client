@@ -18,7 +18,7 @@ export const Footer = () => {
         <FooterStyled>
             <Container>
                 <ContactText>
-                    Dúvidas?{" "}
+                    Dúvidas ou sugestões?{" "}
                     <ContactLink onClick={openModal}>Fale conosco</ContactLink>
                 </ContactText>
             </Container>

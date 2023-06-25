@@ -30,7 +30,7 @@ const FEATURES = [
     {
         title: "Sem passar vergonha",
         description:
-            "Sem se preocupar com julgamentos.\nGanhe confiança e melhore suas habilidades em um ambiente seguro e acolhedor.",
+            "Sem se preocupar com julgamentos. Sem ninguém para te observar.",
         icon: DisabledEyeIcon,
     },
     {

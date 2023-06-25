@@ -8,12 +8,15 @@ export const InputContainer = styled.div`
 `;
 
 export const InputStyled = styled.input`
-    background-color: var(--neutral-color-4);
-    border-radius: 4px;
     height: 36px;
     width: 100%;
     padding: 0 0 0 16px;
-    color: var(--grey-color-2);
+    border-radius: 4px;
+    border: 1px solid
+        ${({ alert }) => (alert ? "var(--alert-color-1)" : "none")};
+    color: ${({ alert }) =>
+        alert ? "var(--alert-color-1)" : "var(--grey-color-2)"};
+    background-color: var(--neutral-color-4);
 `;
 
 export const Label = styled.label`

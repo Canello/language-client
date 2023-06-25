@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
+    AlertText,
     ResetPasswordButton,
     ResetPasswordForm,
     ResetPasswordStyled,
@@ -11,10 +13,10 @@ import { useInput } from "../../hooks/useInput.hook";
 import { ROUTES } from "../../utils/constants";
 import { useApi } from "../../hooks/useApi.hook";
 import { changePassword } from "../../services/auth.service";
+import { Loading } from "../../components/Loading/Loading.component";
 
 export const ResetPassword = () => {
     const [newPassword, onChangeNewPassword] = useInput();
-    const [fetchChangePassword] = useApi(changePassword);
 
     const location = useLocation();
     const resetToken =
@@ -26,8 +28,18 @@ export const ResetPassword = () => {
     const onSubmit = (event) => {
         event.preventDefault();
         fetchChangePassword(resetToken, newPassword);
-        goToSignIn();
     };
+
+    const [inputError, setInputError] = useState(false);
+    const handleError = (error) => {
+        if (error.type === "invalid_input" || error.type === "expired")
+            setInputError(error.message);
+    };
+
+    const [fetchChangePassword, data, isLoading] = useApi(changePassword, {
+        onSuccess: goToSignIn,
+        onError: handleError,
+    });
 
     return (
         <ResetPasswordStyled className="page">
@@ -44,6 +56,18 @@ export const ResetPassword = () => {
                     onChange={onChangeNewPassword}
                 />
                 <Spacer y={20} />
+                {isLoading ? (
+                    <>
+                        <Loading />
+                        <Spacer y={20} />
+                    </>
+                ) : null}
+                {inputError ? (
+                    <>
+                        <AlertText>{inputError}</AlertText>
+                        <Spacer y={20} />
+                    </>
+                ) : null}
                 <ResetPasswordButton
                     variant="primary"
                     size="large"

@@ -59,3 +59,9 @@ export const SignInLink = styled.span`
         opacity: 0.8;
     }
 `;
+
+export const AlertText = styled.span`
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--alert-color-1);
+`;

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     SignInLink,
@@ -7,6 +7,7 @@ import {
     SignInForm,
     SignInStyled,
     Text,
+    AlertText,
 } from "./SignUp.styles";
 import { Input } from "../../components/Input/Input.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
@@ -15,6 +16,7 @@ import { UserContext } from "../../contexts/user.context";
 import { signUp } from "../../services/auth.service";
 import { ROUTES } from "../../utils/constants";
 import { useInput } from "../../hooks/useInput.hook";
+import { Loading } from "../../components/Loading/Loading.component";
 
 export const SignUp = () => {
     const { setUser, setUserToken } = useContext(UserContext);
@@ -34,7 +36,15 @@ export const SignUp = () => {
         goToMain();
     };
 
-    const [submit] = useApi(signUp, { onSuccess: onSignUp });
+    const [inputError, setInputError] = useState(false);
+    const handleError = (error) => {
+        if (error.type === "invalid_input") setInputError(error.message);
+    };
+
+    const [submit, data, isLoading] = useApi(signUp, {
+        onSuccess: onSignUp,
+        onError: handleError,
+    });
     const onSubmit = (event) => {
         event.preventDefault();
         submit({ name, email, password });
@@ -59,6 +69,18 @@ export const SignUp = () => {
                     type="password"
                 />
                 <Spacer y={20} />
+                {isLoading ? (
+                    <>
+                        <Loading />
+                        <Spacer y={20} />
+                    </>
+                ) : null}
+                {inputError ? (
+                    <>
+                        <AlertText>{inputError}</AlertText>
+                        <Spacer y={20} />
+                    </>
+                ) : null}
                 <SignInButton variant="primary" size="large" onClick={onSubmit}>
                     Criar conta
                 </SignInButton>

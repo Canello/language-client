@@ -1,8 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { Input } from "../../components/Input/Input.component";
-import { Spacer } from "../../components/Spacer/Spacer.component";
 import {
     ForgetPassword,
     SignUpLink,
@@ -11,12 +8,16 @@ import {
     SignInForm,
     SignInStyled,
     Text,
+    AlertText,
 } from "./SignIn.styles";
+import { Input } from "../../components/Input/Input.component";
+import { Spacer } from "../../components/Spacer/Spacer.component";
 import { useInput } from "../../hooks/useInput.hook";
 import { useApi } from "../../hooks/useApi.hook";
 import { signIn } from "../../services/auth.service";
 import { UserContext } from "../../contexts/user.context";
 import { ROUTES } from "../../utils/constants";
+import { Loading } from "../../components/Loading/Loading.component";
 
 export const SignIn = () => {
     const { setUser, setUserToken } = useContext(UserContext);
@@ -36,7 +37,15 @@ export const SignIn = () => {
         goToMain();
     };
 
-    const [submit] = useApi(signIn, { onSuccess: onSignIn });
+    const [inputError, setInputError] = useState(false);
+    const handleError = (error) => {
+        if (error.type === "invalid_input") setInputError(error.message);
+    };
+
+    const [submit, data, isLoading] = useApi(signIn, {
+        onSuccess: onSignIn,
+        onError: handleError,
+    });
     const onSubmit = (event) => {
         event.preventDefault();
         submit({ email, password });
@@ -59,6 +68,18 @@ export const SignIn = () => {
                     type="password"
                 />
                 <Spacer y={20} />
+                {isLoading ? (
+                    <>
+                        <Loading />
+                        <Spacer y={20} />
+                    </>
+                ) : null}
+                {inputError ? (
+                    <>
+                        <AlertText>{inputError}</AlertText>
+                        <Spacer y={20} />
+                    </>
+                ) : null}
                 <SignInButton variant="primary" size="large" onClick={onSubmit}>
                     Entrar
                 </SignInButton>
