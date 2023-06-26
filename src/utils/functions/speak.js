@@ -33,14 +33,14 @@ function getChunk(text, currentIndex) {
     let chunk = periods.chunk;
     let lastIndex = periods.lastIndex;
 
-    // if it's only one period, bigger than chunkMaxLength, get the next words
+    // if there's only one period, bigger than chunkMaxLength, get the next words
     if (!chunk) {
         const words = getWords(text, currentIndex, chunkMaxLength);
         chunk = words.chunk;
         lastIndex = words.lastIndex;
     }
 
-    // if it's only one word, bigger than chunkMaxLength, get a slice of the word
+    // if there's only one word, bigger than chunkMaxLength, get a slice of the word
     if (!chunk) {
         const slice = getSlice(text, currentIndex, chunkMaxLength);
         chunk = slice.chunk;

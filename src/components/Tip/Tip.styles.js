@@ -13,4 +13,5 @@ export const TipStyled = styled.div`
     color: var(--grey-color-white);
     text-align: center;
     transition: all 200ms linear;
+    pointer-events: none;
 `;

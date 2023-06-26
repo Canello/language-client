@@ -4,6 +4,7 @@ import {
     AudioButtonContainer,
     AudioTip,
     PageWrapper,
+    RecordingPermissionTip,
 } from "./AppPage.styles";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { useConversation } from "../../../hooks/useConversation.hook";
@@ -27,6 +28,7 @@ export const AppPage = () => {
         response,
         isLoadingResponse,
         isSpeaking,
+        isRecordingAllowed,
     } = useConversation(onCreditsEnd);
 
     const openPayment = usePayment();
@@ -45,6 +47,10 @@ export const AppPage = () => {
                         stopRecording={stopRecording}
                     />
                 </AudioButtonContainer>
+                <RecordingPermissionTip isShowing={!isRecordingAllowed}>
+                    Autorize o uso do microfone no seu navegador para falar com
+                    a Caitlyn
+                </RecordingPermissionTip>
                 <Spacer y={16} />
                 <ChatBox label="Você" isLoading={isLoadingQuery}>
                     {query}

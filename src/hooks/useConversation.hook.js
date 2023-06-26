@@ -14,8 +14,13 @@ export const useConversation = (onCreditsEnd) => {
     };
 
     const { speak, stopSpeaking, isSpeaking } = useSpeak();
-    const { startRecording, stopRecording, isRecording, audioBlob } =
-        useRecord(stopSpeaking);
+    const {
+        startRecording,
+        stopRecording,
+        isRecording,
+        audioBlob,
+        isRecordingAllowed,
+    } = useRecord(stopSpeaking);
     const [
         fetchTranscription,
         transcription,
@@ -60,5 +65,6 @@ export const useConversation = (onCreditsEnd) => {
         isLoadingResponse: isLoadingGptResponse,
         errorResponse: errorGptResponse,
         isSpeaking,
+        isRecordingAllowed,
     };
 };

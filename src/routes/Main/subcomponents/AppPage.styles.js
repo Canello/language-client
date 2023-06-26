@@ -7,6 +7,7 @@ export const AppPageStyled = styled.div`
 `;
 
 export const PageWrapper = styled.div`
+    position: relative;
     width: 100%;
     max-width: 720px;
 `;
@@ -23,4 +24,11 @@ export const AudioTip = styled(Tip)`
     position: absolute;
     left: calc(50% - 160px);
     max-width: 120px;
+`;
+
+export const RecordingPermissionTip = styled(Tip)`
+    position: absolute;
+    top: 16px;
+    left: 0;
+    max-width: 240px;
 `;

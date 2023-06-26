@@ -4,11 +4,18 @@ import { useRef, useState } from "react";
 export const useRecord = (stopSpeaking) => {
     const [isRecording, setIsRecording] = useState(false);
     const [audioBlob, setAudioBlob] = useState(null);
+    const [isRecordingAllowed, setIsRecordingAllowed] = useState(true);
     const mediaRecorder = useRef(null);
 
-    if (!mediaRecorder.current) setupRecorder(mediaRecorder, setAudioBlob);
+    const startRecording = async () => {
+        if (!isRecordingAllowed) return;
 
-    const startRecording = () => {
+        if (!mediaRecorder.current) {
+            const isAllowed = await setupRecorder(mediaRecorder, setAudioBlob);
+            setIsRecordingAllowed(isAllowed);
+            if (!isAllowed) return;
+        }
+
         if (stopSpeaking) stopSpeaking();
         setIsRecording(true);
         mediaRecorder.current.start();
@@ -19,16 +26,27 @@ export const useRecord = (stopSpeaking) => {
         mediaRecorder.current.stop();
     };
 
-    return { startRecording, stopRecording, isRecording, audioBlob };
+    return {
+        startRecording,
+        stopRecording,
+        isRecording,
+        audioBlob,
+        isRecordingAllowed,
+    };
 };
 
 // Functions
 async function setupRecorder(mediaRecorder, setAudioBlob) {
     let audioChunks = [];
-    const stream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: false,
-    });
+    let stream;
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: false,
+        });
+    } catch (err) {
+        return false;
+    }
     mediaRecorder.current = new MediaRecorder(stream);
 
     mediaRecorder.current.addEventListener("dataavailable", (event) => {
@@ -40,4 +58,6 @@ async function setupRecorder(mediaRecorder, setAudioBlob) {
         setAudioBlob(audioBlob);
         audioChunks = [];
     });
+
+    return true;
 }
