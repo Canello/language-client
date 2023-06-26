@@ -49,8 +49,8 @@ export const AppPage = () => {
                     />
                 </AudioButtonContainer>
                 <RecordingPermissionTip isShowing={!isRecordingAllowed}>
-                    Autorize o uso do microfone no seu navegador para falar com
-                    a Caitlyn
+                    Autorize o uso do microfone no seu navegador e recarregue a
+                    página
                 </RecordingPermissionTip>
                 <Spacer y={16} />
                 <ChatBox label="Você" isLoading={isLoadingQuery}>

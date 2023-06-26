@@ -35,6 +35,6 @@ export const RecordingPermissionTip = styled(Tip)`
 
 export const Notes = styled.span`
     color: #99968f;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
 `;
