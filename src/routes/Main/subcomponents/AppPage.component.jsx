@@ -3,6 +3,7 @@ import {
     AppPageStyled,
     AudioButtonContainer,
     AudioTip,
+    Notes,
     PageWrapper,
     RecordingPermissionTip,
 } from "./AppPage.styles";
@@ -63,6 +64,13 @@ export const AppPage = () => {
                 >
                     {response}
                 </ChatBox>
+                <Spacer y={24} />
+                <Notes>
+                    Estamos em versão beta.
+                    <br />
+                    Use Google Chrome ou Microsoft Edge no desktop para garantir
+                    melhor funcionamento.
+                </Notes>
             </PageWrapper>
             <FreeTestIsOverModal
                 isShowing={isShowingModal}
