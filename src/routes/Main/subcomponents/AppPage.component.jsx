@@ -21,7 +21,7 @@ export const AppPage = () => {
     const onCreditsEnd = () => showModal();
 
     const {
-        startRecording,
+        record,
         stopRecording,
         isRecording,
         query,
@@ -29,7 +29,7 @@ export const AppPage = () => {
         response,
         isLoadingResponse,
         isSpeaking,
-        isRecordingAllowed,
+        hasDeclinedRecordingPermission,
     } = useConversation(onCreditsEnd);
 
     const openPayment = usePayment();
@@ -44,11 +44,13 @@ export const AppPage = () => {
                     </AudioTip>
                     <AudioButton
                         isRecording={isRecording}
-                        startRecording={startRecording}
+                        startRecording={record}
                         stopRecording={stopRecording}
                     />
                 </AudioButtonContainer>
-                <RecordingPermissionTip isShowing={!isRecordingAllowed}>
+                <RecordingPermissionTip
+                    isShowing={hasDeclinedRecordingPermission}
+                >
                     Autorize o uso do microfone no seu navegador e recarregue a
                     página
                 </RecordingPermissionTip>

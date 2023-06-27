@@ -4,6 +4,7 @@ export class Speaker {
     constructor({ onSpeak, onStop }) {
         this.onSpeak = onSpeak ?? (() => {});
         this.onStop = onStop ?? (() => {});
+
         this.#setup();
     }
 

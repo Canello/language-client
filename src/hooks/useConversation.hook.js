@@ -13,19 +13,17 @@ export const useConversation = (onCreditsEnd) => {
     };
 
     const { speak, stopSpeaking, isSpeaking } = useSpeak();
-    const {
-        startRecording,
-        stopRecording,
-        isRecording,
-        audioBlob,
-        isRecordingAllowed,
-    } = useRecord(stopSpeaking);
+
+    const { record, stopRecording, isRecording, audioBlob, hasDeclined } =
+        useRecord({ onRecord: stopSpeaking });
+
     const [
         fetchTranscription,
         transcription,
         isLoadingTranscription,
         errorTranscription,
     ] = useApi(transcribe, { initialData: "", onError });
+
     const [
         fetchGptResponse,
         gptResponse,
@@ -54,7 +52,7 @@ export const useConversation = (onCreditsEnd) => {
     }, [gptResponse]);
 
     return {
-        startRecording,
+        record,
         stopRecording,
         isRecording,
         query: transcription,
@@ -64,6 +62,6 @@ export const useConversation = (onCreditsEnd) => {
         isLoadingResponse: isLoadingGptResponse,
         errorResponse: errorGptResponse,
         isSpeaking,
-        isRecordingAllowed,
+        hasDeclinedRecordingPermission: hasDeclined,
     };
 };
