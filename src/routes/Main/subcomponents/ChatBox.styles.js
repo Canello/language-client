@@ -41,7 +41,7 @@ export const Maximize = styled(Minimize)`
 `;
 
 export const H4 = styled.h4`
-    color: #99968f;
+    color: var(--neutral-color-1);
     font-size: 14px;
     font-weight: 400;
 `;
@@ -78,7 +78,7 @@ export const Box = styled.div`
 
 export const Text = styled.p`
     white-space: pre-wrap;
-    color: #002b5b;
+    color: var(--secondary-color-5);
     font-size: 16px;
     font-weight: 400;
     padding: 0;

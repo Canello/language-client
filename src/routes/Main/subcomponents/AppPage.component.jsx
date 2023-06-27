@@ -66,12 +66,9 @@ export const AppPage = () => {
                 >
                     {response}
                 </ChatBox>
-                <Spacer y={24} />
+                <Spacer y={16} />
                 <Notes>
-                    Estamos em versão beta.
-                    <br />
-                    Use Google Chrome ou Microsoft Edge no desktop para garantir
-                    melhor funcionamento.
+                    Para melhor funcionamento, use Chrome, Edge ou Safari.
                 </Notes>
             </PageWrapper>
             <FreeTestIsOverModal
