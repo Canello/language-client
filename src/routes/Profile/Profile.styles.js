@@ -8,6 +8,13 @@ export const Text = styled.h2`
     color: var(--neutral-color-1);
 `;
 
+export const RenewalText = styled.h2`
+    max-width: 186px;
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--secondary-color-1);
+`;
+
 export const Logout = styled.span`
     font-size: 16px;
     font-weight: 700;
