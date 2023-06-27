@@ -1,26 +1,42 @@
-class Speaker {
-    constructor() {
-        this.voice = new Voice().voice;
-    }
-}
+import EasySpeech from "easy-speech";
 
-class Voice {
-    constructor() {
-        this.voices = [];
-        this._loadVoices();
+export class Speaker {
+    constructor({ onSpeak, onStop }) {
+        this.onSpeak = onSpeak ?? (() => {});
+        this.onStop = onStop ?? (() => {});
+        this.#setup();
     }
 
-    get voice() {
-        return this.voices[0];
+    async speak(text, options = {}) {
+        this.onSpeak();
+
+        await EasySpeech.speak({
+            text,
+            voice: this.#getVoice(),
+            pitch: options.pitch ?? 1,
+            rate: options.rate ?? 1,
+            volume: options.volume ?? 1,
+            boundary: (err) => {
+                console.log("Speaker boundary reached.");
+                this.onStop();
+            },
+        });
+
+        this.onStop();
     }
 
-    _loadVoices() {
-        const load = () => {
-            this.voices = speechSynthesis
-                .getVoices()
-                .filter((voice) => voice.lang.startsWith("en-US"));
-        };
-        load();
-        speechSynthesis.onvoiceschanged = load;
+    stop() {
+        this.onStop();
+        EasySpeech.cancel();
+    }
+
+    async #setup() {
+        await EasySpeech.init({ maxTimeout: 5000, interval: 250 })
+            .then(() => console.log("Speaker correctly initialized."))
+            .catch((err) => console.error("Error initializing speaker."));
+    }
+
+    #getVoice() {
+        return EasySpeech.voices().filter((voice) => voice.lang === "en-US")[0];
     }
 }
