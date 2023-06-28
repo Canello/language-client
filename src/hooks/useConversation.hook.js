@@ -4,9 +4,10 @@ import { useRecord } from "./useRecord.hook";
 import { useApi } from "./useApi.hook";
 import { transcribe } from "../services/transcription.service";
 import { chat } from "../services/chat.service";
+import { ConversationMemory } from "../utils/classes/ConversationMemory";
 
 export const useConversation = (onCreditsEnd) => {
-    const messages = useRef([]);
+    const messages = useRef(new ConversationMemory());
 
     const onError = (error) => {
         if (error.type === "no_credits") onCreditsEnd();
