@@ -42,7 +42,7 @@ export const useConversation = (onCreditsEnd) => {
     useEffect(() => {
         if (!transcription) return;
         messages.current.push({ role: "user", content: transcription });
-        fetchGptResponse(messages.current);
+        fetchGptResponse(messages.current.messages);
     }, [transcription]);
 
     // Speak gpt response everytime a new gpt response is generated

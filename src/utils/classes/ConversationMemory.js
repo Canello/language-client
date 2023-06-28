@@ -1,5 +1,5 @@
 export class ConversationMemory {
-    #messagesLimit = 20;
+    #messagesLimit = 16;
 
     constructor() {
         this.messages = [];
