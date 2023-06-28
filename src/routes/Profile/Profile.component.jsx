@@ -31,8 +31,7 @@ export const Profile = () => {
                 <>
                     <Spacer y={4} />
                     <Text>
-                        {"Assinatura válida até " +
-                            formatDate(user?.expirationDate)}
+                        {"Assinatura válida até " + formatDate(user?.expiresAt)}
                     </Text>
                 </>
             ) : null}
