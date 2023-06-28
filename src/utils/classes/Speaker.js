@@ -21,7 +21,7 @@ export class Speaker {
                 console.log("Speaker boundary reached.");
                 this.onStop();
             },
-        });
+        }).catch(() => {}); // catch to avoid displaying error when canceling the speaking
 
         this.onStop();
     }
