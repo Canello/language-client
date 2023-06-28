@@ -24,8 +24,8 @@ export const AppPage = () => {
         record,
         stopRecording,
         isRecording,
-        query,
-        isLoadingQuery,
+        transcription,
+        isLoadingTranscription,
         response,
         isLoadingResponse,
         isSpeaking,
@@ -55,8 +55,8 @@ export const AppPage = () => {
                     página
                 </RecordingPermissionTip>
                 <Spacer y={16} />
-                <ChatBox label="Você" isLoading={isLoadingQuery}>
-                    {query}
+                <ChatBox label="Você" isLoading={isLoadingTranscription}>
+                    {transcription}
                 </ChatBox>
                 <Spacer y={24} />
                 <ChatBox
