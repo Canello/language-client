@@ -9,7 +9,7 @@ export const Text = styled.h2`
 `;
 
 export const RenewalText = styled.h2`
-    max-width: 186px;
+    max-width: 246px;
     font-size: 13px;
     font-weight: normal;
     color: var(--secondary-color-1);

@@ -41,11 +41,13 @@ export const Profile = () => {
                 <>
                     <Spacer y={32} />
                     <Button variant="primary" onClick={openPayment}>
-                        Assinar por R$19,99
+                        Comprar acesso por R$19,99
                     </Button>
                     <Spacer y={4} />
                     <RenewalText>
-                        <b>Não renova</b> automaticamente, pode ficar tranquilo.
+                        - <b>Não renova</b> automaticamente.
+                        <br />- Inclui aproximadamente 1000 mensagens durante 1
+                        mês.
                     </RenewalText>
                 </>
             )}

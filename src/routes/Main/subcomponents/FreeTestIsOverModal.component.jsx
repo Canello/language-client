@@ -12,13 +12,14 @@ export const FreeTestIsOverModal = ({ openPayment, ...otherProps }) => {
         <Modal {...otherProps}>
             <FreeTestIsOverModalStyled>
                 <Text>O teste grátis acabou!</Text>
-                <Spacer y={16} />
+                <Spacer y={32} />
                 <BuyButton variant="primary" onClick={openPayment}>
-                    Assinar por R$19,99
+                    Comprar acesso por R$19,99
                 </BuyButton>
-                <Spacer y={4} />
+                <Spacer y={16} />
                 <RenewalText>
-                    <b>Não renova</b> automaticamente, pode ficar tranquilo.
+                    - <b>Não renova</b> automaticamente.
+                    <br />- Inclui aproximadamente 1000 mensagens durante 1 mês.
                 </RenewalText>
             </FreeTestIsOverModalStyled>
         </Modal>
