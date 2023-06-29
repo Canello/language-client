@@ -91,7 +91,7 @@ export const LandingPage = () => {
             <Spacer y={100} />
             <IsItForYouSection>
                 <SectionTitle>
-                    Será que Caitlyn é a escolha certa para você?
+                    Será que a Caitlyn é a escolha certa para você?
                 </SectionTitle>
                 <Spacer y={32} />
                 <IsItForYouDescription>
