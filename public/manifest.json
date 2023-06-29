@@ -1,7 +1,12 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
-    "icons": [],
+    "short_name": "Caitlyn",
+    "name": "Caitlyn",
+    "icons": [
+        {
+            "src": "./logo-secondary-3.svg",
+            "sizes": "any"
+        }
+    ],
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",
