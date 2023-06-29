@@ -31,7 +31,7 @@ export const Navbar = () => {
                     <LogoContainer onClick={goToMain}>
                         <LogoStyled src={Logo} />
                         <Spacer x={4} />
-                        <LogoText>Caitlyn</LogoText>
+                        <LogoText>caitlyn</LogoText>
                     </LogoContainer>
                     {user ? (
                         <ProfileLink onClick={goToProfile}>

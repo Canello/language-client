@@ -43,7 +43,7 @@ export const LogoText = styled.span`
 `;
 
 export const LogoStyled = styled.img`
-    width: 36px;
+    width: 32px;
 `;
 
 export const ProfileLink = styled.span`
