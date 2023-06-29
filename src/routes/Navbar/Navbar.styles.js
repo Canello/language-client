@@ -21,6 +21,31 @@ export const NavbarWrapper = styled.div`
     max-width: 1000px;
 `;
 
+export const LogoContainer = styled.div`
+    display: flex;
+    align-items: flex-end;
+    padding: 4px 4px;
+    border-radius: 4px;
+    background-color: #1f324650;
+    backdrop-filter: blur(5px);
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+`;
+
+export const LogoText = styled.span`
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey-color-white);
+    font-family: var(--logo-font);
+`;
+
+export const LogoStyled = styled.img`
+    width: 36px;
+`;
+
 export const ProfileLink = styled.span`
     font-size: 14px;
     font-weight: 700;

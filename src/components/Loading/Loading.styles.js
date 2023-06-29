@@ -5,7 +5,7 @@ export const LoadingStyled = styled.div`
     height: ${({ size }) => size}px;
     border-radius: 100%;
     border: ${({ thickness }) => thickness}px solid var(--secondary-color-4);
-    border-bottom-color: var(--secondary-color-3);
+    border-bottom-color: var(--secondary-color-6);
     animation: loading-spinner 1.25s linear infinite;
 
     @keyframes loading-spinner {

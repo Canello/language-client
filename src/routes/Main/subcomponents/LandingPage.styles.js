@@ -70,7 +70,6 @@ export const Arrow = styled.img``;
 export const FeaturesSection = styled.section`
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     width: 100%;
     max-width: 1000px;
     padding: 0 32px;
