@@ -9,6 +9,9 @@ import {
     SignInStyled,
     Text,
     AlertText,
+    LogoStyled,
+    LogoContainer,
+    LogoText,
 } from "./SignIn.styles";
 import { Input } from "../../components/Input/Input.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
@@ -18,6 +21,7 @@ import { signIn } from "../../services/auth.service";
 import { UserContext } from "../../contexts/user.context";
 import { ROUTES } from "../../utils/constants";
 import { Loading } from "../../components/Loading/Loading.component";
+import Logo from "../../assets/logo-secondary-2.svg";
 
 export const SignIn = () => {
     const { setUser, setUserToken } = useContext(UserContext);
@@ -55,10 +59,14 @@ export const SignIn = () => {
         <SignInStyled className="page">
             <SignInForm>
                 <Spacer y={32} />
-                <h6>logo</h6>
-                <Spacer y={8} />
+                <LogoContainer>
+                    <LogoStyled src={Logo} />
+                    <Spacer y={8} />
+                    <LogoText>caitlyn</LogoText>
+                </LogoContainer>
+                <Spacer y={16} />
                 <Text>Entre para começar seu teste grátis.</Text>
-                <Spacer y={24} />
+                <Spacer y={32} />
                 <Input label="Email" value={email} onChange={onChangeEmail} />
                 <Spacer y={4} />
                 <Input
