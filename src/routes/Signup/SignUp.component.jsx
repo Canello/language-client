@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-    SignInLink,
-    SignInText,
-    SignInButton,
-    SignInForm,
-    SignInStyled,
+    SignUpLink,
+    SignUpText,
+    SignUpButton,
+    SignUpForm,
+    SignUpStyled,
     Text,
     AlertText,
     LogoStyled,
@@ -55,8 +55,8 @@ export const SignUp = () => {
     };
 
     return (
-        <SignInStyled className="page">
-            <SignInForm>
+        <SignUpStyled className="page">
+            <SignUpForm>
                 <Spacer y={32} />
                 <LogoContainer>
                     <LogoStyled src={Logo} />
@@ -89,15 +89,15 @@ export const SignUp = () => {
                         <Spacer y={20} />
                     </>
                 ) : null}
-                <SignInButton variant="primary" size="large" onClick={onSubmit}>
+                <SignUpButton variant="primary" size="large" onClick={onSubmit}>
                     Criar conta
-                </SignInButton>
+                </SignUpButton>
                 <Spacer y={24} />
                 <span>
-                    <SignInText>Já tem uma conta?</SignInText>
-                    <SignInLink onClick={goToSignIn}> Entre</SignInLink>
+                    <SignUpText>Já tem uma conta?</SignUpText>
+                    <SignUpLink onClick={goToSignIn}> Entre</SignUpLink>
                 </span>
-            </SignInForm>
-        </SignInStyled>
+            </SignUpForm>
+        </SignUpStyled>
     );
 };

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Button } from "../../components/Button/Button.component";
 
-export const SignInStyled = styled.div`
+export const SignUpStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@ export const SignInStyled = styled.div`
     padding-top: 52px;
 `;
 
-export const SignInForm = styled.form`
+export const SignUpForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +41,7 @@ export const Text = styled.h2`
     color: var(--neutral-color-1);
 `;
 
-export const SignInButton = styled(Button)`
+export const SignUpButton = styled(Button)`
     width: 100%;
 `;
 
@@ -58,14 +58,14 @@ export const ForgetPassword = styled.span`
     }
 `;
 
-export const SignInText = styled.span`
+export const SignUpText = styled.span`
     display: inline;
     font-size: 14px;
     font-weight: normal;
     color: var(--neutral-color-1);
 `;
 
-export const SignInLink = styled.span`
+export const SignUpLink = styled.span`
     display: inline;
     font-size: 14px;
     font-weight: bold;
