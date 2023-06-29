@@ -4,10 +4,12 @@ import {
     ContactText,
     Container,
     FooterStyled,
+    LogoStyled,
     LogoText,
 } from "./Footer.styles";
 import { Spacer } from "../Spacer/Spacer.component";
 import { ContactModal } from "./subcomponents/ContactModal.component";
+import Logo from "../../assets/logo-secondary-2.svg";
 
 export const Footer = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +26,7 @@ export const Footer = () => {
             </Container>
             <Spacer y={24} />
             <Container>
-                <h6>logo</h6>
+                <LogoStyled src={Logo} />
                 <Spacer x={8} />
                 <LogoText>Caitlyn - 2023</LogoText>
             </Container>

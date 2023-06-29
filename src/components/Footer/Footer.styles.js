@@ -13,6 +13,7 @@ export const FooterStyled = styled.footer`
 
 export const Container = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 export const ContactText = styled.span`
@@ -29,6 +30,10 @@ export const ContactLink = styled.span`
         cursor: pointer;
         text-decoration: none;
     }
+`;
+
+export const LogoStyled = styled.img`
+    width: 22px;
 `;
 
 export const LogoText = styled.div`
