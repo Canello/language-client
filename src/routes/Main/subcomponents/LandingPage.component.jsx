@@ -82,28 +82,28 @@ export const LandingPage = () => {
                     </SeeMore>
                 </Wrapper>
             </HeroSection>
-            <Spacer y={48} />
+            <Spacer y={80} />
             <FeaturesSection>
                 <SectionTitle>Por que a Caitlyn?</SectionTitle>
                 <Spacer y={24} />
                 <FeatureCardsContainer>{featureCards}</FeatureCardsContainer>
             </FeaturesSection>
-            <Spacer y={88} />
+            <Spacer y={100} />
             <IsItForYouSection>
                 <SectionTitle>
                     Será que Caitlyn é a escolha certa para você?
                 </SectionTitle>
-                <Spacer y={24} />
+                <Spacer y={32} />
                 <IsItForYouDescription>
-                    <FirstWord>Você</FirstWord> consegue ler textos, mas se
+                    <FirstWord>- Você</FirstWord> consegue ler textos, mas se
                     sente inseguro para conversar.
                     <br />
                     <br />
-                    <FirstWord>Você</FirstWord> até fala inglês, mas às vezes
+                    <FirstWord>- Você</FirstWord> até fala inglês, mas às vezes
                     erra a estrutura da frase ou comete erros de vocabulário.
                     <br />
                     <br />
-                    <FirstWord>Você</FirstWord> quer uma opção mais acessível
+                    <FirstWord>- Você</FirstWord> quer uma opção mais acessível
                     que professores americanos, mas que dê resultados
                     comparáveis.
                 </IsItForYouDescription>
