@@ -88,7 +88,7 @@ export const LandingPage = () => {
                 <Spacer y={24} />
                 <FeatureCardsContainer>{featureCards}</FeatureCardsContainer>
             </FeaturesSection>
-            <Spacer y={100} />
+            <Spacer y={120} />
             <IsItForYouSection>
                 <SectionTitle>
                     Será que a Caitlyn é a escolha certa para você?
@@ -116,6 +116,7 @@ export const LandingPage = () => {
                     Teste grátis (sem colocar cartão)
                 </CallToAction>
             </IsItForYouSection>
+            <Spacer y={64} />
         </MainStyled>
     );
 };

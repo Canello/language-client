@@ -96,8 +96,8 @@ export const IsItForYouSection = styled.section`
 `;
 
 export const SectionTitle = styled.h3`
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 900;
     color: var(--secondary-color-2);
 `;
 
