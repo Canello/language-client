@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
     AlertText,
+    LogoContainer,
+    LogoStyled,
+    LogoText,
     ResetPasswordButton,
     ResetPasswordForm,
     ResetPasswordStyled,
@@ -14,6 +17,7 @@ import { ROUTES } from "../../utils/constants";
 import { useApi } from "../../hooks/useApi.hook";
 import { changePassword } from "../../services/auth.service";
 import { Loading } from "../../components/Loading/Loading.component";
+import Logo from "../../assets/logo-secondary-2.svg";
 
 export const ResetPassword = () => {
     const [newPassword, onChangeNewPassword] = useInput();
@@ -45,10 +49,14 @@ export const ResetPassword = () => {
         <ResetPasswordStyled className="page">
             <ResetPasswordForm>
                 <Spacer y={32} />
-                <h6>logo</h6>
-                <Spacer y={8} />
+                <LogoContainer>
+                    <LogoStyled src={Logo} />
+                    <Spacer y={8} />
+                    <LogoText>caitlyn</LogoText>
+                </LogoContainer>
+                <Spacer y={16} />
                 <Text>Insira sua nova senha.</Text>
-                <Spacer y={24} />
+                <Spacer y={32} />
                 <Input
                     label="Nova senha"
                     type="password"

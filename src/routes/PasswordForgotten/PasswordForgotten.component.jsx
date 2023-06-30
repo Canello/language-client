@@ -1,5 +1,8 @@
 import {
     Confirmation,
+    LogoContainer,
+    LogoStyled,
+    LogoText,
     PasswordForgottenButton,
     PasswordForgottenForm,
     PasswordForgottenStyled,
@@ -11,6 +14,7 @@ import { useState } from "react";
 import { Input } from "../../components/Input/Input.component";
 import { useApi } from "../../hooks/useApi.hook";
 import { requestPasswordResetLink } from "../../services/auth.service";
+import Logo from "../../assets/logo-secondary-2.svg";
 
 export const PasswordForgotten = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -28,14 +32,18 @@ export const PasswordForgotten = () => {
     return (
         <PasswordForgottenStyled className="page">
             <Spacer y={32} />
+            <LogoContainer>
+                <LogoStyled src={Logo} />
+                <Spacer y={8} />
+                <LogoText>caitlyn</LogoText>
+            </LogoContainer>
+            <Spacer y={16} />
             {isSubmitted ? (
                 <Confirmation>Link enviado! Olhe seu email.</Confirmation>
             ) : (
                 <PasswordForgottenForm>
-                    <h6>logo</h6>
-                    <Spacer y={8} />
                     <Text>Te enviaremos um link para resetar a sua senha.</Text>
-                    <Spacer y={24} />
+                    <Spacer y={32} />
                     <Input
                         label="Email"
                         value={email}

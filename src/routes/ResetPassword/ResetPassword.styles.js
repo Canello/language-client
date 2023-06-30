@@ -14,6 +14,23 @@ export const ResetPasswordForm = styled.form`
     max-width: 400px;
 `;
 
+export const LogoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const LogoStyled = styled.img`
+    width: 36px;
+`;
+
+export const LogoText = styled.span`
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary-color-2);
+    font-family: var(--logo-font);
+`;
+
 export const Text = styled.h2`
     font-size: 16px;
     font-weight: normal;
