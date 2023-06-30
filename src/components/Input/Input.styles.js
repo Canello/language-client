@@ -27,4 +27,5 @@ export const Label = styled.label`
     padding-left: ${({ isShifted }) => (isShifted ? "0" : "16px")};
     top: ${({ isShifted }) => (isShifted ? "0" : "24px")};
     transition: all 100ms ease-in-out;
+    pointer-events: none;
 `;
