@@ -10,7 +10,7 @@ export const AppPageStyled = styled.div`
 export const PageWrapper = styled.div`
     position: relative;
     width: 100%;
-    max-width: 720px;
+    max-width: 800px;
 `;
 
 export const AudioButtonContainer = styled.div`
@@ -39,7 +39,7 @@ export const UserChatBoxesContainer = styled.div`
     flex-direction: row;
     gap: 24px;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 880px) {
         flex-direction: column;
     }
 `;
