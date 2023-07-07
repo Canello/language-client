@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSpeak } from "./useSpeak.hook";
 import { useRecord } from "./useRecord.hook";
 import { useApi } from "./useApi.hook";
@@ -25,6 +25,8 @@ export const useConversation = (onCreditsEnd) => {
         errorTranscription,
     ] = useApi(transcribe, { initialData: "", onError });
 
+    const [response, setResponse] = useState("");
+    const [corrections, setCorrections] = useState("");
     const [
         fetchGptResponse,
         gptResponse,
@@ -49,7 +51,13 @@ export const useConversation = (onCreditsEnd) => {
     useEffect(() => {
         if (!gptResponse) return;
         messages.current.push({ role: "assistant", content: gptResponse });
-        speak(gptResponse);
+
+        const { corrections, response } = parseGptResponse(gptResponse);
+        if (corrections) setCorrections(corrections);
+        else setCorrections("");
+        setResponse(response);
+
+        speak(response);
     }, [gptResponse]);
 
     return {
@@ -59,10 +67,21 @@ export const useConversation = (onCreditsEnd) => {
         transcription,
         isLoadingTranscription,
         errorTranscription,
-        response: gptResponse,
+        corrections,
+        response,
         isLoadingResponse: isLoadingGptResponse,
         errorResponse: errorGptResponse,
         isSpeaking,
         hasDeclinedRecordingPermission: hasDeclined,
     };
 };
+
+function parseGptResponse(str) {
+    try {
+        let { corrections, response } = JSON.parse(str);
+        return { corrections, response };
+    } catch (err) {
+        console.log("ChatGPT's response is messed up!");
+        return { response: str };
+    }
+}

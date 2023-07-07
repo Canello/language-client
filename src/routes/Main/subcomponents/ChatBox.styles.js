@@ -54,12 +54,12 @@ export const Box = styled.div`
     padding: 16px;
     padding-bottom: ${({ isMinimized }) => (isMinimized ? "0" : "16px")};
     border-radius: 4px;
-    background-color: ${({ isMinimized }) =>
-        isMinimized ? "#ececec" : "#ececec"};
+    background-color: var(--grey-color-1);
     overflow: hidden;
     transition: all 300ms ease-in-out;
     animation: ${({ isActive }) =>
         isActive ? "glowing-chat-box 2s linear infinite" : "none"};
+    color: var(--secondary-color-5);
 
     @keyframes glowing-chat-box {
         0% {
@@ -78,7 +78,6 @@ export const Box = styled.div`
 
 export const Text = styled.p`
     white-space: pre-wrap;
-    color: var(--secondary-color-5);
     font-size: 16px;
     font-weight: 400;
     padding: 0;

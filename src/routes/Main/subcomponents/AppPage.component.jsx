@@ -3,9 +3,11 @@ import {
     AppPageStyled,
     AudioButtonContainer,
     AudioTip,
+    CorrectionsChatBox,
     Notes,
     PageWrapper,
     RecordingPermissionTip,
+    UserChatBoxesContainer,
 } from "./AppPage.styles";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { useConversation } from "../../../hooks/useConversation.hook";
@@ -26,6 +28,7 @@ export const AppPage = () => {
         isRecording,
         transcription,
         isLoadingTranscription,
+        corrections,
         response,
         isLoadingResponse,
         isSpeaking,
@@ -55,9 +58,22 @@ export const AppPage = () => {
                     página
                 </RecordingPermissionTip>
                 <Spacer y={16} />
-                <ChatBox label="Você" isLoading={isLoadingTranscription}>
-                    {transcription}
-                </ChatBox>
+                <UserChatBoxesContainer
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                    }}
+                >
+                    <ChatBox label="Você" isLoading={isLoadingTranscription}>
+                        {transcription}
+                    </ChatBox>
+                    <CorrectionsChatBox
+                        label="Correções"
+                        isLoading={isLoadingResponse}
+                    >
+                        {corrections}
+                    </CorrectionsChatBox>
+                </UserChatBoxesContainer>
                 <Spacer y={24} />
                 <ChatBox
                     label="Caitlyn"

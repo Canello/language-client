@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Tip } from "../../../components/Tip/Tip.component";
+import { ChatBox } from "./ChatBox.component";
 
 export const AppPageStyled = styled.div`
     display: flex;
@@ -31,6 +32,17 @@ export const RecordingPermissionTip = styled(Tip)`
     top: 16px;
     left: 0;
     max-width: 240px;
+`;
+
+export const UserChatBoxesContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+`;
+
+export const CorrectionsChatBox = styled(ChatBox)`
+    color: var(--neutral-color-1);
+    background-color: var(--neutral-color-5);
 `;
 
 export const Notes = styled.span`

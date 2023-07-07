@@ -15,7 +15,13 @@ import {
 import { Loading } from "../../../components/Loading/Loading.component";
 import MinimizeIcon from "../../../assets/minimize.svg";
 
-export const ChatBox = ({ label, isLoading, isActive, children }) => {
+export const ChatBox = ({
+    label,
+    isLoading,
+    isActive,
+    children,
+    ...otherProps
+}) => {
     const [isMinimized, setIsMinimized] = useState(false);
     const toggleIsMinimized = () => setIsMinimized(!isMinimized);
 
@@ -41,7 +47,11 @@ export const ChatBox = ({ label, isLoading, isActive, children }) => {
                 </IconsContainer>
             </LabelContainer>
             <Spacer y={4} />
-            <Box isMinimized={isMinimized} isActive={isActive ?? false}>
+            <Box
+                isMinimized={isMinimized}
+                isActive={isActive ?? false}
+                {...otherProps}
+            >
                 {isLoading ? null : (
                     <Text isMinimized={isMinimized}>{children}</Text>
                 )}
