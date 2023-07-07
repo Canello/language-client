@@ -38,6 +38,10 @@ export const UserChatBoxesContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 24px;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 
 export const CorrectionsChatBox = styled(ChatBox)`

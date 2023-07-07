@@ -58,12 +58,7 @@ export const AppPage = () => {
                     página
                 </RecordingPermissionTip>
                 <Spacer y={16} />
-                <UserChatBoxesContainer
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                    }}
-                >
+                <UserChatBoxesContainer>
                     <ChatBox label="Você" isLoading={isLoadingTranscription}>
                         {transcription}
                     </ChatBox>
