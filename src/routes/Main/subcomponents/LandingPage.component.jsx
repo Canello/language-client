@@ -104,8 +104,7 @@ export const LandingPage = () => {
                     <br />
                     <br />
                     <FirstWord>- Você</FirstWord> quer uma opção mais acessível
-                    que professores americanos, mas que dê resultados
-                    comparáveis.
+                    que professores americanos, mas que dê resultados reais.
                 </IsItForYouDescription>
                 <Spacer y={32} />
                 <CallToAction
