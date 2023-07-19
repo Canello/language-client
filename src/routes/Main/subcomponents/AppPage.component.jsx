@@ -15,6 +15,7 @@ import { AudioButton } from "./AudioButton.component";
 import { ChatBox } from "./ChatBox.component";
 import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
 import { usePayment } from "../../../hooks/usePayment.hook";
+import { track } from "../../../utils/functions/track";
 
 export const AppPage = () => {
     const [isShowingModal, setIsShowingModal] = useState(false);
@@ -35,6 +36,11 @@ export const AppPage = () => {
         hasDeclinedRecordingPermission,
     } = useConversation(onCreditsEnd);
 
+    const recordAndTrack = () => {
+        track("trackCustom", "ClickRecord");
+        record();
+    };
+
     const openPayment = usePayment();
 
     return (
@@ -47,7 +53,7 @@ export const AppPage = () => {
                     </AudioTip>
                     <AudioButton
                         isRecording={isRecording}
-                        startRecording={record}
+                        startRecording={recordAndTrack}
                         stopRecording={stopRecording}
                     />
                 </AudioButtonContainer>
