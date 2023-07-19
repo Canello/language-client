@@ -21,6 +21,7 @@ import { ROUTES } from "../../utils/constants";
 import { useInput } from "../../hooks/useInput.hook";
 import { Loading } from "../../components/Loading/Loading.component";
 import Logo from "../../assets/logo-secondary-2.svg";
+import { track } from "../../utils/functions/track";
 
 export const SignUp = () => {
     const { setUser, setUserToken } = useContext(UserContext);
@@ -37,6 +38,7 @@ export const SignUp = () => {
         const { user, token } = data;
         if (user) setUser(user);
         if (token) setUserToken(token);
+        track("track", "CompleteRegistration");
         goToMain();
     };
 
