@@ -4,7 +4,7 @@ import { AudioButton } from "./AudioButton.component";
 
 jest.mock("./BlinkingDot.component", () => {
     return {
-        BlinkingDot: () => <div data-testid="BlinkingDotMock"></div>,
+        BlinkingDot: () => <div data-testid="BlinkingDotMock" />,
     };
 });
 
