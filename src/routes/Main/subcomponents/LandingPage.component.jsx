@@ -66,7 +66,7 @@ export const LandingPage = () => {
     };
 
     return (
-        <MainStyled>
+        <MainStyled data-testid="MainStyled">
             <HeroSection>
                 <Wrapper>
                     <Title>Pratique inglês conversando com a Caitlyn</Title>
