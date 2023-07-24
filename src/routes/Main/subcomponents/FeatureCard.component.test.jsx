@@ -16,12 +16,14 @@ describe("FeatureCard", () => {
 
     it("should render without errors", async () => {
         render(<FeatureCard feature={feature} />);
+
         const featureCardElement = screen.getByTestId("FeatureCardStyled");
         expect(featureCardElement).toBeInTheDocument();
     });
 
     it("displays feature data correctly", async () => {
         render(<FeatureCard feature={feature} />);
+
         const iconElement = screen.getByRole("img");
         const titleElement = screen.getByText(feature.title);
         const descriptionElement = screen.getByText(feature.description);

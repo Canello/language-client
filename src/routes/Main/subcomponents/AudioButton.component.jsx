@@ -6,7 +6,7 @@ export const AudioButton = ({ isRecording, startRecording, stopRecording }) => {
     const onClick = isRecording ? stopRecording : startRecording;
 
     return (
-        <AudioButtonStyled onClick={onClick}>
+        <AudioButtonStyled onClick={onClick} data-testid="FeatureCardStyled">
             <Mic src={MicIcon} />
             {isRecording ? <BlinkingDot /> : null}
         </AudioButtonStyled>
