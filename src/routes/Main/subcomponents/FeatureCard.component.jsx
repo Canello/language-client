@@ -1,14 +1,14 @@
-import { Spacer } from "../../../components/Spacer/Spacer.component";
 import {
     Description,
     FeatureCardStyled,
     Icon,
     Title,
 } from "./FeatureCard.styles";
+import { Spacer } from "../../../components/Spacer/Spacer.component";
 
 export const FeatureCard = ({ feature }) => {
     return (
-        <FeatureCardStyled>
+        <FeatureCardStyled data-testid="FeatureCardStyled">
             <Spacer y={24} />
             <Icon src={feature.icon} />
             <Spacer y={24} />
