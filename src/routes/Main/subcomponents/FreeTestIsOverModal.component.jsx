@@ -13,7 +13,7 @@ export const FreeTestIsOverModal = ({ ...otherProps }) => {
 
     return (
         <Modal {...otherProps}>
-            <FreeTestIsOverModalStyled>
+            <FreeTestIsOverModalStyled data-testid="FreeTestIsOverModalStyled">
                 <Text>O teste grátis acabou!</Text>
                 <Spacer y={32} />
                 <BuyButton variant="primary" onClick={openPayment}>
