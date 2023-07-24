@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-import { Spacer } from "../../../components/Spacer/Spacer.component";
 import {
     Box,
     ChatBoxStyled,
@@ -12,6 +10,7 @@ import {
     Minimize,
     Text,
 } from "./ChatBox.styles";
+import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { Loading } from "../../../components/Loading/Loading.component";
 import MinimizeIcon from "../../../assets/minimize.svg";
 
@@ -26,7 +25,7 @@ export const ChatBox = ({
     const toggleIsMinimized = () => setIsMinimized(!isMinimized);
 
     return (
-        <ChatBoxStyled>
+        <ChatBoxStyled data-testid="ChatBoxStyled">
             <LabelContainer>
                 <LabelWrapper>
                     <H4>{label}</H4>
@@ -38,11 +37,16 @@ export const ChatBox = ({
                     ) : null}
                 </LabelWrapper>
                 <IconsContainer>
-                    <Minimize onClick={toggleIsMinimized} src={MinimizeIcon} />
+                    <Minimize
+                        onClick={toggleIsMinimized}
+                        src={MinimizeIcon}
+                        data-testid="Minimize"
+                    />
                     <Maximize
                         onClick={toggleIsMinimized}
                         src={MinimizeIcon}
                         isMinimized={isMinimized}
+                        data-testid="Maximize"
                     />
                 </IconsContainer>
             </LabelContainer>
