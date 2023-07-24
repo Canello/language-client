@@ -1,4 +1,4 @@
-import { getByTestId, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Main } from "./Main.component";
 import { UserContext } from "../../contexts/user.context";
 

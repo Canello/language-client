@@ -6,8 +6,11 @@ import {
 } from "./FreeTestIsOverModal.styles";
 import { Modal } from "../../../components/Modal/Modal.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
+import { usePayment } from "../../../hooks/usePayment.hook";
 
-export const FreeTestIsOverModal = ({ openPayment, ...otherProps }) => {
+export const FreeTestIsOverModal = ({ ...otherProps }) => {
+    const openPayment = usePayment();
+
     return (
         <Modal {...otherProps}>
             <FreeTestIsOverModalStyled>

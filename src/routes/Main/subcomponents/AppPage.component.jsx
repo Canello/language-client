@@ -14,7 +14,6 @@ import { useConversation } from "../../../hooks/useConversation.hook";
 import { AudioButton } from "./AudioButton.component";
 import { ChatBox } from "./ChatBox.component";
 import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
-import { usePayment } from "../../../hooks/usePayment.hook";
 import { track } from "../../../utils/functions/track";
 
 export const AppPage = () => {
@@ -40,8 +39,6 @@ export const AppPage = () => {
         track("trackCustom", "ClickRecord");
         record();
     };
-
-    const openPayment = usePayment();
 
     return (
         <AppPageStyled className="page">
@@ -91,7 +88,6 @@ export const AppPage = () => {
             <FreeTestIsOverModal
                 isShowing={isShowingModal}
                 onClose={closeModal}
-                openPayment={openPayment}
             />
         </AppPageStyled>
     );
