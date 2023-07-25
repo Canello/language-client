@@ -22,7 +22,7 @@ export const Profile = () => {
 
     if (!user) return null;
     return (
-        <ProfileStyled className="page">
+        <ProfileStyled className="page" data-testid="ProfileStyled">
             <Spacer y={32} />
             <Text>{user?.fullName}</Text>
             <Spacer y={4} />
