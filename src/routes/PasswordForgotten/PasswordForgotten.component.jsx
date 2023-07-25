@@ -30,7 +30,10 @@ export const PasswordForgotten = () => {
     };
 
     return (
-        <PasswordForgottenStyled className="page">
+        <PasswordForgottenStyled
+            className="page"
+            data-testid="PasswordForgottenStyled"
+        >
             <Spacer y={32} />
             <LogoContainer>
                 <LogoStyled src={Logo} />
