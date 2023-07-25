@@ -26,7 +26,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <NavbarStyled>
+            <NavbarStyled data-testid="NavbarStyled">
                 <NavbarWrapper>
                     <LogoContainer onClick={goToMain}>
                         <LogoStyled src={Logo} />
