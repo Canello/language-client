@@ -7,7 +7,6 @@ export const TipStyled = styled.div`
     padding: 8px;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.7);
-    opacity: ${({ isShowing }) => (isShowing ? 1 : 0)};
     font-size: 13px;
     font-weight: normal;
     color: var(--grey-color-white);

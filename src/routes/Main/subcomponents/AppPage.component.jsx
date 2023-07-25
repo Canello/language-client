@@ -41,7 +41,7 @@ export const AppPage = () => {
     };
 
     return (
-        <AppPageStyled className="page">
+        <AppPageStyled className="page" data-testid="AppPageStyled">
             <PageWrapper>
                 <Spacer y={32} />
                 <AudioButtonContainer>
