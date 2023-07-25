@@ -11,6 +11,7 @@ export const AudioButtonStyled = styled.button`
     border: none;
     border-radius: 100%;
     background-color: #f98c74;
+    transition: all 100ms linear;
 
     &:hover {
         cursor: pointer;
