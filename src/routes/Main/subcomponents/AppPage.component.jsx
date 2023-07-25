@@ -82,6 +82,8 @@ export const AppPage = () => {
                 </ChatBox>
                 <Spacer y={16} />
                 <Notes>
+                    Problemas com a voz? Tente usar a Caitlyn no PC.
+                    <br />
                     Para melhor funcionamento, use Chrome, Edge ou Safari.
                 </Notes>
             </PageWrapper>
