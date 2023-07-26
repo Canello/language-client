@@ -46,7 +46,7 @@ export const ResetPassword = () => {
     });
 
     return (
-        <ResetPasswordStyled className="page">
+        <ResetPasswordStyled className="page" data-testid="ResetPasswordStyled">
             <ResetPasswordForm>
                 <Spacer y={32} />
                 <LogoContainer>
