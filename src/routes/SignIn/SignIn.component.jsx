@@ -56,7 +56,7 @@ export const SignIn = () => {
     };
 
     return (
-        <SignInStyled className="page">
+        <SignInStyled className="page" data-testid="SignInStyled">
             <SignInForm>
                 <Spacer y={32} />
                 <LogoContainer>
