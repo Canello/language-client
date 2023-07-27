@@ -4,12 +4,12 @@ import Close from "../../assets/close.svg";
 
 export const Modal = ({ isShowing, onClose, children, ...otherProps }) => {
     return createPortal(
-        <ModalStyled isShowing={isShowing}>
+        <ModalStyled isShowing={isShowing} data-testid="ModalStyled">
             <Content {...otherProps}>
                 {children}
                 <CloseIcon src={Close} onClick={onClose} />
             </Content>
-            <Background onClick={onClose} />
+            <Background onClick={onClose} data-testid="ModalBackground" />
         </ModalStyled>,
         document.getElementById("modal-root")
     );
