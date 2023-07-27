@@ -1,9 +1,9 @@
 import { act, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { SignIn } from "./SignIn.component";
-import { useNavigate } from "react-router-dom";
+import { SignUp } from "./SignUp.component";
 import { UserContext } from "../../contexts/user.context";
 import { useApi } from "../../hooks/useApi.hook";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
 
 jest.mock("react-router-dom", () => {
@@ -26,25 +26,28 @@ const makeUseApi = ({ fetchFn = () => {}, data = {}, isLoading = false }) => {
     };
 };
 
-describe("SignIn", () => {
-    const renderSignIn = () =>
+describe("SignUp", () => {
+    const renderSignUp = () =>
         render(
             <UserContext.Provider value={{ user: null, setUser: () => {} }}>
-                <SignIn />
+                <SignUp />
             </UserContext.Provider>
         );
 
     const fillFormAndSubmit = async () => {
+        const nameInputElement = screen.getByLabelText("Nome");
+        user.click(nameInputElement);
+        user.keyboard("Some Name");
         const emailInputElement = screen.getByLabelText("Email");
         user.click(emailInputElement);
         user.keyboard("email@test.com");
         const passwordInputElement = screen.getByLabelText("Senha");
         user.click(passwordInputElement);
         user.keyboard("some-password");
-        const signInButton = screen.getByRole("button", {
-            name: /Entrar/i,
+        const signUpButton = screen.getByRole("button", {
+            name: /Criar conta/i,
         });
-        user.click(signInButton);
+        user.click(signUpButton);
     };
 
     beforeEach(() => {
@@ -52,16 +55,16 @@ describe("SignIn", () => {
     });
 
     it("should render without errors", async () => {
-        renderSignIn();
+        renderSignUp();
 
-        const signInElement = screen.getByTestId("SignInStyled");
-        expect(signInElement).toBeInTheDocument();
+        const signUpElement = screen.getByTestId("SignUpStyled");
+        expect(signUpElement).toBeInTheDocument();
     });
 
     it("should display error message if error of type invalid_input is received", async () => {
         const err = { type: "invalid_input", message: "Some message." };
         useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
-        renderSignIn();
+        renderSignUp();
 
         await act(async () => {
             await fillFormAndSubmit();
@@ -74,7 +77,7 @@ describe("SignIn", () => {
     it("shouldn't display error message if an error with type other than invalid_input is received", async () => {
         const err = { type: "some_error_type", message: "Some message." };
         useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
-        renderSignIn();
+        renderSignUp();
 
         await act(async () => {
             await fillFormAndSubmit();
@@ -85,36 +88,23 @@ describe("SignIn", () => {
         }).rejects.toThrow();
     });
 
-    it("should go to password forgotten route if user says she has forgotten its password", async () => {
+    it("should go to sign in route if user clicks to do so", async () => {
         const spyNavigate = jest.fn(() => {});
         useNavigate.mockImplementation(() => spyNavigate);
-        renderSignIn();
+        renderSignUp();
 
-        const forgotPasswordLinkElement =
-            screen.getByText(/Esqueceu a senha\?/i);
-        user.click(forgotPasswordLinkElement);
-
-        expect(spyNavigate).toHaveBeenCalledTimes(1);
-        expect(spyNavigate).toHaveBeenCalledWith(ROUTES.passwordForgotten);
-    });
-
-    it("should go to sign up route if user clicks to do so", async () => {
-        const spyNavigate = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
-        renderSignIn();
-
-        const signUpLinkElement = screen.getByText(/Cadastre-se/i);
-        user.click(signUpLinkElement);
+        const signInLinkElement = screen.getByText(/Entre/i);
+        user.click(signInLinkElement);
 
         expect(spyNavigate).toHaveBeenCalledTimes(1);
-        expect(spyNavigate).toHaveBeenCalledWith(ROUTES.signUp);
+        expect(spyNavigate).toHaveBeenCalledWith(ROUTES.signIn);
     });
 
-    it("should go to the main route if user successfully logs in", async () => {
+    it("should go to the main route if user is successfully registered", async () => {
         const spyNavigate = jest.fn(() => {});
         useNavigate.mockImplementation(() => spyNavigate);
         useApi.mockImplementation(makeUseApi({ fetchFn: () => [{}, null] }));
-        renderSignIn();
+        renderSignUp();
 
         await act(async () => {
             await fillFormAndSubmit();
@@ -126,7 +116,7 @@ describe("SignIn", () => {
 
     it("should display loader while data is being loaded", async () => {
         useApi.mockImplementation(makeUseApi({ isLoading: true }));
-        renderSignIn();
+        renderSignUp();
 
         const loaderElement = screen.getByTestId("LoadingStyled");
         expect(loaderElement).toBeInTheDocument();
@@ -134,7 +124,7 @@ describe("SignIn", () => {
 
     it("shouldn't display loader when data is not being loaded", async () => {
         useApi.mockImplementation(makeUseApi({ isLoading: false }));
-        renderSignIn();
+        renderSignUp();
 
         const loaderElement = screen.queryByTestId("LoadingStyled");
         expect(loaderElement).toBeNull();
