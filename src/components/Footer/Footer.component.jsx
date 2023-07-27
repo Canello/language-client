@@ -17,7 +17,7 @@ export const Footer = () => {
     const closeModal = () => setIsOpen(false);
 
     return (
-        <FooterStyled>
+        <FooterStyled data-testid="FooterStyled">
             <Container>
                 <ContactText>
                     Dúvidas ou sugestões?{" "}
