@@ -1,7 +1,7 @@
 import EasySpeech from "easy-speech";
 
 export class Speaker {
-    constructor({ onSpeak, onStop }) {
+    constructor({ onSpeak, onStop } = {}) {
         this.onSpeak = onSpeak ?? (() => {});
         this.onStop = onStop ?? (() => {});
 
@@ -32,6 +32,9 @@ export class Speaker {
     }
 
     async #setup() {
+        const i = await EasySpeech.init({ maxTimeout: 5000, interval: 250 });
+        console.log("HEREEEE");
+        console.log(i);
         await EasySpeech.init({ maxTimeout: 5000, interval: 250 })
             .then(() => console.log("Speaker correctly initialized."))
             .catch((err) => console.error("Error initializing speaker."));
