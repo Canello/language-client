@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { Footer } from "./Footer.component";
 
@@ -21,7 +21,9 @@ describe("Footer", () => {
         render(<Footer />);
 
         const contactLinkElement = screen.getByText("Fale conosco");
-        user.click(contactLinkElement);
+        await act(async () => {
+            user.click(contactLinkElement);
+        });
 
         const contactModalElement = await screen.findByTestId(
             "ContactModalStyled"
