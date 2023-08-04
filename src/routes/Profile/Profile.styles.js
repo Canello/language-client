@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const ProfileStyled = styled.div``;
+export const ProfileStyled = styled.main``;
 
-export const Text = styled.h2`
+export const Text = styled.p`
     font-size: 16px;
     font-weight: normal;
     color: var(--neutral-color-1);
@@ -15,7 +15,7 @@ export const RenewalText = styled.h2`
     color: var(--secondary-color-1);
 `;
 
-export const Logout = styled.span`
+export const Logout = styled.a`
     font-size: 16px;
     font-weight: 700;
     color: var(--secondary-color-1);

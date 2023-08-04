@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../../components/Button/Button.component";
 
-export const MainStyled = styled.div`
+export const MainStyled = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,7 +59,7 @@ export const SeeMore = styled.div`
     backdrop-filter: blur(5px);
 `;
 
-export const SeeMoreText = styled.span`
+export const SeeMoreText = styled.p`
     font-size: 16px;
     font-weight: 700;
     color: var(--grey-color-white);
@@ -101,13 +101,13 @@ export const SectionTitle = styled.h3`
     color: var(--secondary-color-2);
 `;
 
-export const IsItForYouDescription = styled.span`
+export const IsItForYouDescription = styled.p`
     font-size: 16px;
     font-weight: 500;
     color: var(--neutral-color-1);
 `;
 
-export const FirstWord = styled.span`
+export const FirstWord = styled.p`
     font-weight: 700;
     color: var(--secondary-color-2);
 `;

@@ -9,7 +9,7 @@ jest.mock("easy-speech", () => {
     };
 });
 
-describe("Speak class", () => {
+describe("Speaker class", () => {
     it("should call onSpeak before start speaking and onStop after finishing", async () => {
         const spyOnSpeak = jest.fn(() => {});
         const spyOnStop = jest.fn(() => {});

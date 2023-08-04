@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Tip } from "../../../components/Tip/Tip.component";
 import { ChatBox } from "./ChatBox.component";
 
-export const AppPageStyled = styled.div`
+export const AppPageStyled = styled.main`
     display: flex;
     justify-content: center;
 `;
@@ -49,7 +49,7 @@ export const CorrectionsChatBox = styled(ChatBox)`
     background-color: var(--neutral-color-5);
 `;
 
-export const Notes = styled.span`
+export const Notes = styled.p`
     color: var(--neutral-color-1);
     font-size: 13px;
     font-weight: 400;

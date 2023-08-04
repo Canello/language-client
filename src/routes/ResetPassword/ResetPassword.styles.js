@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../components/Button/Button.component";
 
-export const ResetPasswordStyled = styled.div`
+export const ResetPasswordStyled = styled.main`
     display: flex;
     justify-content: center;
 `;
@@ -14,7 +14,7 @@ export const ResetPasswordForm = styled.form`
     max-width: 400px;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.figure`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@ export const LogoStyled = styled.img`
     width: 36px;
 `;
 
-export const LogoText = styled.span`
+export const LogoText = styled.figcaption`
     font-size: 14px;
     font-weight: 500;
     color: var(--secondary-color-2);
@@ -41,7 +41,7 @@ export const ResetPasswordButton = styled(Button)`
     width: 100%;
 `;
 
-export const AlertText = styled.span`
+export const AlertText = styled.p`
     font-size: 14px;
     font-weight: bold;
     color: var(--alert-color-1);

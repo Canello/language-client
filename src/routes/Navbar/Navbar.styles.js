@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavbarStyled = styled.nav`
+export const NavbarStyled = styled.header`
     position: fixed;
     display: flex;
     justify-content: center;
@@ -13,7 +13,7 @@ export const NavbarStyled = styled.nav`
     z-index: 9;
 `;
 
-export const NavbarWrapper = styled.div`
+export const NavbarWrapper = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +21,7 @@ export const NavbarWrapper = styled.div`
     max-width: 1000px;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.figure`
     display: flex;
     align-items: flex-end;
     padding: 4px 4px;
@@ -35,7 +35,7 @@ export const LogoContainer = styled.div`
     }
 `;
 
-export const LogoText = styled.span`
+export const LogoText = styled.figcaption`
     font-size: 14px;
     font-weight: 500;
     color: var(--grey-color-white);
@@ -46,7 +46,7 @@ export const LogoStyled = styled.img`
     width: 32px;
 `;
 
-export const ProfileLink = styled.span`
+export const ProfileLink = styled.a`
     font-size: 14px;
     font-weight: 700;
     color: var(--neutral-color-1);

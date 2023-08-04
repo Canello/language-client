@@ -95,10 +95,10 @@ export const SignUp = () => {
                     Criar conta
                 </SignUpButton>
                 <Spacer y={24} />
-                <span>
+                <p>
                     <SignUpText>Já tem uma conta?</SignUpText>
                     <SignUpLink onClick={goToSignIn}> Entre</SignUpLink>
-                </span>
+                </p>
             </SignUpForm>
         </SignUpStyled>
     );

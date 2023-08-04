@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Button } from "../../components/Button/Button.component";
 
-export const SignUpStyled = styled.div`
+export const SignUpStyled = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@ export const SignUpForm = styled.form`
     max-width: 400px;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.figure`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@ export const LogoStyled = styled.img`
     width: 36px;
 `;
 
-export const LogoText = styled.span`
+export const LogoText = styled.figcaption`
     font-size: 14px;
     font-weight: 500;
     color: var(--secondary-color-2);
@@ -45,27 +45,14 @@ export const SignUpButton = styled(Button)`
     width: 100%;
 `;
 
-export const ForgetPassword = styled.span`
-    display: block;
-    font-size: 14px;
-    font-weight: normal;
-    color: var(--neutral-color-1);
-    text-decoration: underline;
-
-    &:hover {
-        cursor: pointer;
-        text-decoration: none;
-    }
-`;
-
-export const SignUpText = styled.span`
+export const SignUpText = styled.p`
     display: inline;
     font-size: 14px;
     font-weight: normal;
     color: var(--neutral-color-1);
 `;
 
-export const SignUpLink = styled.span`
+export const SignUpLink = styled.p`
     display: inline;
     font-size: 14px;
     font-weight: bold;
@@ -77,7 +64,7 @@ export const SignUpLink = styled.span`
     }
 `;
 
-export const AlertText = styled.span`
+export const AlertText = styled.p`
     font-size: 14px;
     font-weight: bold;
     color: var(--alert-color-1);

@@ -2,7 +2,7 @@ export class Recorder {
     #mediaRecorder;
     #stream;
 
-    constructor({ onRecord, onStop, onDecline }) {
+    constructor({ onRecord, onStop, onDecline } = {}) {
         this.onRecord = onRecord ?? (() => {});
         this.onStop = onStop ?? (() => {});
         this.onDecline = onDecline ?? (() => {});

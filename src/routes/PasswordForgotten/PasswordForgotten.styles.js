@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Button } from "../../components/Button/Button.component";
 
-export const PasswordForgottenStyled = styled.div`
+export const PasswordForgottenStyled = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
-export const Confirmation = styled.span`
+export const Confirmation = styled.h2`
     font-size: 18px;
     font-weight: 700;
     color: var(--neutral-color-1);
@@ -21,7 +21,7 @@ export const PasswordForgottenForm = styled.form`
     max-width: 400px;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.figure`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@ export const LogoStyled = styled.img`
     width: 36px;
 `;
 
-export const LogoText = styled.span`
+export const LogoText = styled.figcaption`
     font-size: 14px;
     font-weight: 500;
     color: var(--secondary-color-2);
