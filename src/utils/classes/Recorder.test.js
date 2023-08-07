@@ -1,10 +1,19 @@
 import { Recorder } from "./Recorder";
 
 global.MediaRecorder = class MediaRecorder {
-    constructor() {}
+    constructor() {
+        this.toCallOnStop = () => {};
+    }
+
     start() {}
-    stop() {}
-    addEventListener() {}
+
+    stop() {
+        this.toCallOnStop();
+    }
+
+    addEventListener(listenTo, func) {
+        this.toCallOnStop = func;
+    }
 };
 
 const makeNavigator = (isError = false) => {
@@ -27,12 +36,6 @@ const makeNavigator = (isError = false) => {
             },
         };
     }
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
-    // nao ta setando global.navigator !!!!!!!!!!!!!!!!!!!
 };
 
 describe("Recorder class", () => {
@@ -54,7 +57,7 @@ describe("Recorder class", () => {
 
         await recorder.record();
         recorder.stop();
-        // expect(spyOnStop).toHaveBeenCalledTimes(1);
+        expect(spyOnStop).toHaveBeenCalledTimes(1);
     });
 
     it("should call onDecline if user declines audio permission", async () => {
@@ -65,7 +68,7 @@ describe("Recorder class", () => {
         expect(spyOnDecline).toHaveBeenCalledTimes(1);
     });
 
-    it("should should not throw an error if any callback function is missing", async () => {
+    it("should not throw an error if any callback function is missing", async () => {
         const recorders = [
             new Recorder({ onRecord: () => {} }),
             new Recorder({ onStop: () => {} }),
