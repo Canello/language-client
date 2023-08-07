@@ -8,5 +8,5 @@ export const formatDate = (dateString) => {
     return day + "/" + month + "/" + year;
 };
 
-const ensureTwoDigits = (num) =>
+export const ensureTwoDigits = (num) =>
     String(num).length === 1 ? "0" + num : String(num);
