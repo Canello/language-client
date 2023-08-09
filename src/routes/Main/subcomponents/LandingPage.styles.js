@@ -107,7 +107,7 @@ export const IsItForYouDescription = styled.p`
     color: var(--neutral-color-1);
 `;
 
-export const FirstWord = styled.p`
+export const FirstWord = styled.span`
     font-weight: 700;
     color: var(--secondary-color-2);
 `;

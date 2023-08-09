@@ -32,9 +32,6 @@ export class Speaker {
     }
 
     async #setup() {
-        const i = await EasySpeech.init({ maxTimeout: 5000, interval: 250 });
-        console.log("HEREEEE");
-        console.log(i);
         await EasySpeech.init({ maxTimeout: 5000, interval: 250 })
             .then(() => console.log("Speaker correctly initialized."))
             .catch((err) => console.error("Error initializing speaker."));
