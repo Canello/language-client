@@ -10,13 +10,13 @@ import {
 } from "./PasswordForgotten.styles";
 import { useInput } from "../../hooks/useInput.hook";
 import { Spacer } from "../../components/Spacer/Spacer.component";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Input } from "../../components/Input/Input.component";
 import { useApi } from "../../hooks/useApi.hook";
 import { requestPasswordResetLink } from "../../services/auth.service";
 import Logo from "../../assets/logo-secondary-2.svg";
 
-export const PasswordForgotten = () => {
+export const PasswordForgotten: React.FC = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [email, onChangeEmail] = useInput();
 

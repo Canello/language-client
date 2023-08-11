@@ -5,8 +5,19 @@ import {
     Title,
 } from "./FeatureCard.styles";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
+import React from "react";
 
-export const FeatureCard = ({ feature }) => {
+interface Feature {
+    title: string;
+    description: string;
+    icon: any;
+}
+
+interface IFeatureCardProps {
+    feature: Feature;
+}
+
+export const FeatureCard: React.FC<IFeatureCardProps> = ({ feature }) => {
     return (
         <FeatureCardStyled data-testid="FeatureCardStyled">
             <Spacer y={24} />

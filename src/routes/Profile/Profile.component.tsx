@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Logout, ProfileStyled, RenewalText, Text } from "./Profile.styles";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { UserContext } from "../../contexts/user.context";
@@ -8,7 +8,7 @@ import { ROUTES } from "../../utils/constants";
 import { formatDate } from "../../utils/functions/formatDate";
 import { usePayment } from "../../hooks/usePayment.hook";
 
-export const Profile = () => {
+export const Profile: React.FC = () => {
     const { user, logout } = useContext(UserContext);
     const openPayment = usePayment();
 

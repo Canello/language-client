@@ -9,14 +9,14 @@ import {
     ProfileLink,
 } from "./Navbar.styles";
 import { Button } from "../../components/Button/Button.component";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { ROUTES } from "../../utils/constants";
 import { Footer } from "../../components/Footer/Footer.component";
 import Logo from "../../assets/logo-white.svg";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
     const { user } = useContext(UserContext);
 
     const navigate = useNavigate();

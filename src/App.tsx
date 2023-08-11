@@ -9,8 +9,9 @@ import { Profile } from "./routes/Profile/Profile.component";
 import { ROUTES } from "./utils/constants";
 import { ResetPassword } from "./routes/ResetPassword/ResetPassword.component";
 import { PasswordForgotten } from "./routes/PasswordForgotten/PasswordForgotten.component";
+import React from "react";
 
-function App() {
+const App: React.FC = () => {
     return (
         <AppStyled>
             <Routes>
@@ -31,6 +32,6 @@ function App() {
             </Routes>
         </AppStyled>
     );
-}
+};
 
 export default App;

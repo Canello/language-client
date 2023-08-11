@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     SignUpLink,
@@ -23,7 +23,7 @@ import { Loading } from "../../components/Loading/Loading.component";
 import Logo from "../../assets/logo-secondary-2.svg";
 import { track } from "../../utils/functions/track";
 
-export const SignUp = () => {
+export const SignUp: React.FC = () => {
     const { setUser, setUserToken } = useContext(UserContext);
 
     const [name, onChangeName] = useInput();

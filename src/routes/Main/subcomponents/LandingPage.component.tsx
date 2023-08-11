@@ -26,6 +26,7 @@ import ClockIcon from "../../../assets/clock.svg";
 import DisabledEyeIcon from "../../../assets/disabled-eye.svg";
 import HeroArrow from "../../../assets/landing-page-arrow.svg";
 import { track } from "../../../utils/functions/track";
+import React from "react";
 
 const FEATURES = [
     {
@@ -58,7 +59,7 @@ const featureCards = FEATURES.map((feature) => (
     <FeatureCard key={feature.title} feature={feature} />
 ));
 
-export const LandingPage = () => {
+export const LandingPage: React.FC = () => {
     const navigate = useNavigate();
     const goToSignUp = () => {
         track("trackCustom", "LandingPageTestButton");

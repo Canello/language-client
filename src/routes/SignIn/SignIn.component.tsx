@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     ForgetPassword,
@@ -23,7 +23,7 @@ import { ROUTES } from "../../utils/constants";
 import { Loading } from "../../components/Loading/Loading.component";
 import Logo from "../../assets/logo-secondary-2.svg";
 
-export const SignIn = () => {
+export const SignIn: React.FC = () => {
     const { setUser, setUserToken } = useContext(UserContext);
 
     const [email, onChangeEmail] = useInput();

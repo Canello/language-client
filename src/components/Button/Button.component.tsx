@@ -1,10 +1,16 @@
+import React from "react";
 import {
     PrimaryButton,
     SecondaryButton,
     TertiaryButton,
 } from "./Button.styles";
 
-export const Button = ({
+interface IButtonProps {
+    variant?: string;
+    size?: string;
+}
+
+export const Button: React.FC<React.PropsWithChildren<IButtonProps>> = ({
     variant = "primary",
     size = "large",
     children,
