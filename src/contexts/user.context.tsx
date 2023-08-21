@@ -12,7 +12,8 @@ type User = null | {
     fullName: string;
     email: string;
     freeTrials: number;
-    expiresAt: Date;
+    expiresAt: string;
+    isActive: boolean;
 };
 
 type UserToken = null | string;

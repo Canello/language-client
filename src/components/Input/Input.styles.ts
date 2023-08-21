@@ -7,7 +7,10 @@ export const InputContainer = styled.div`
     width: 100%;
 `;
 
-export const InputStyled = styled.input`
+interface IInputStyled {
+    alert: string | undefined;
+}
+export const InputStyled = styled.input<IInputStyled>`
     height: 36px;
     width: 100%;
     padding: 0 0 0 16px;
@@ -19,7 +22,10 @@ export const InputStyled = styled.input`
     background-color: var(--neutral-color-4);
 `;
 
-export const Label = styled.label`
+interface ILabel {
+    isShifted: boolean;
+}
+export const Label = styled.label<ILabel>`
     position: absolute;
     font-size: ${({ isShifted }) => (isShifted ? "12px" : "14px")};
     font-weight: normal;

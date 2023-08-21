@@ -1,3 +1,4 @@
+import React, { MouseEventHandler } from "react";
 import {
     BuyButton,
     FreeTestIsOverModalStyled,
@@ -8,11 +9,20 @@ import { Modal } from "../../../components/Modal/Modal.component";
 import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { usePayment } from "../../../hooks/usePayment.hook";
 
-export const FreeTestIsOverModal = ({ ...otherProps }) => {
+interface IFreeTestIsOverModelProps {
+    isShowing: boolean;
+    onClose: MouseEventHandler;
+}
+
+export const FreeTestIsOverModal: React.FC<IFreeTestIsOverModelProps> = ({
+    isShowing,
+    onClose,
+    ...otherProps
+}) => {
     const openPayment = usePayment();
 
     return (
-        <Modal {...otherProps}>
+        <Modal isShowing={isShowing} onClose={onClose} {...otherProps}>
             <FreeTestIsOverModalStyled data-testid="FreeTestIsOverModalStyled">
                 <Text>O teste grátis acabou!</Text>
                 <Spacer y={32} />

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Speaker } from "../utils/classes/Speaker";
 
 export const useSpeak = () => {
-    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
     const speaker = useRef(
         new Speaker({

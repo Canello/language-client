@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const ModalStyled = styled.div`
+interface IModalStyled {
+    isShowing: boolean | undefined;
+}
+export const ModalStyled = styled.div<IModalStyled>`
     position: fixed;
     display: ${({ isShowing }) => (isShowing ? "flex" : "none")};
     justify-content: center;
@@ -25,7 +28,10 @@ export const Content = styled.div`
     z-index: 1000;
 `;
 
-export const CloseIcon = styled.img`
+interface ICloseIcon {
+    onClick: Function;
+}
+export const CloseIcon = styled.img<ICloseIcon>`
     position: absolute;
     height: 20px;
     padding: 2px;

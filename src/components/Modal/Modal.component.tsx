@@ -1,8 +1,19 @@
+import React, { MouseEventHandler, PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
 import { Background, CloseIcon, Content, ModalStyled } from "./Modal.styles";
 import Close from "../../assets/close.svg";
 
-export const Modal = ({ isShowing, onClose, children, ...otherProps }) => {
+interface IModalProps {
+    isShowing: boolean;
+    onClose: MouseEventHandler;
+}
+
+export const Modal: React.FC<PropsWithChildren<IModalProps>> = ({
+    isShowing,
+    onClose,
+    children,
+    ...otherProps
+}) => {
     return createPortal(
         <ModalStyled isShowing={isShowing} data-testid="ModalStyled">
             <Content {...otherProps}>
@@ -11,6 +22,6 @@ export const Modal = ({ isShowing, onClose, children, ...otherProps }) => {
             </Content>
             <Background onClick={onClose} data-testid="ModalBackground" />
         </ModalStyled>,
-        document.getElementById("modal-root")
+        document.getElementById("modal-root")!
     );
 };

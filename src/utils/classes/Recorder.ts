@@ -1,8 +1,17 @@
-export class Recorder {
-    #mediaRecorder;
-    #stream;
+interface RecorderArgs {
+    onRecord?: Function;
+    onStop?: Function;
+    onDecline?: Function;
+}
 
-    constructor({ onRecord, onStop, onDecline } = {}) {
+export class Recorder {
+    #mediaRecorder: MediaRecorder | null;
+    #stream: MediaStream | null;
+    onRecord: Function;
+    onStop: Function;
+    onDecline: Function;
+
+    constructor({ onRecord, onStop, onDecline }: RecorderArgs = {}) {
         this.onRecord = onRecord ?? (() => {});
         this.onStop = onStop ?? (() => {});
         this.onDecline = onDecline ?? (() => {});
@@ -13,12 +22,14 @@ export class Recorder {
 
     async record() {
         await this.#setStream();
+        if (!this.#stream) return;
         this.#mediaRecorder = this.#getMediaRecorder(this.#stream);
         this.#mediaRecorder.start();
         this.onRecord();
     }
 
     stop() {
+        if (!this.#mediaRecorder) return;
         this.#mediaRecorder.stop();
         this.#mediaRecorder = null;
         this.#cancelStream();
@@ -40,9 +51,9 @@ export class Recorder {
         this.#stream = null;
     }
 
-    #getMediaRecorder(stream) {
+    #getMediaRecorder(stream: MediaStream) {
         const mediaRecorder = new MediaRecorder(stream);
-        const audioChunks = [];
+        const audioChunks: Array<BlobPart> = [];
 
         mediaRecorder.addEventListener("dataavailable", (event) => {
             audioChunks.push(event.data);

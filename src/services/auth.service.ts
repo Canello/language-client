@@ -1,68 +1,80 @@
 import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
-export const signIn = async ({ email, password }) => {
-    let res = await fetch(API_ADDRESS + "/auth/signin", {
+interface ISignIn {
+    email: string;
+    password: string;
+}
+export const signIn = async ({ email, password }: ISignIn) => {
+    const res = await fetch(API_ADDRESS + "/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data;
+    return resJson.data;
 };
 
-export const signUp = async ({ name, email, password }) => {
-    let res = await fetch(API_ADDRESS + "/auth/signup", {
+interface ISignUp {
+    name: string;
+    email: string;
+    password: string;
+}
+export const signUp = async ({ name, email, password }: ISignUp) => {
+    const res = await fetch(API_ADDRESS + "/auth/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ fullName: name, email, password }),
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data;
+    return resJson.data;
 };
 
-export const getUser = (userToken) => async () => {
-    let res = await fetch(API_ADDRESS + "/auth/user", {
+export const getUser = (userToken: string | null) => async () => {
+    const res = await fetch(API_ADDRESS + "/auth/user", {
         headers: {
             Authorization: "Bearer " + userToken,
         },
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data?.user;
+    return resJson.data?.user;
 };
 
-export const requestPasswordResetLink = async (email) => {
-    let res = await fetch(API_ADDRESS + "/auth/reset-link", {
+export const requestPasswordResetLink = async (email: string) => {
+    const res = await fetch(API_ADDRESS + "/auth/reset-link", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data.link;
+    return resJson.data.link;
 };
 
-export const changePassword = async (resetToken, newPassword) => {
-    let res = await fetch(API_ADDRESS + "/auth/change-password", {
+export const changePassword = async (
+    resetToken: string,
+    newPassword: string
+) => {
+    const res = await fetch(API_ADDRESS + "/auth/change-password", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ token: resetToken, newPassword }),
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.status;
+    return resJson.status;
 };

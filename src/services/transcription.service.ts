@@ -1,19 +1,19 @@
 import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
-export const transcribe = async (audioBlob, userToken) => {
+export const transcribe = async (audioBlob: Blob, userToken: string) => {
     const formData = new FormData();
     formData.append("file", audioBlob, "audio.wav");
 
-    let res = await fetch(API_ADDRESS + "/transcription", {
+    const res = await fetch(API_ADDRESS + "/transcription", {
         method: "POST",
         headers: {
             Authorization: "Bearer " + userToken,
         },
         body: formData,
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data.transcription;
+    return resJson.data.transcription;
 };

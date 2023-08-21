@@ -1,4 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, {
+    ChangeEvent,
+    ChangeEventHandler,
+    MouseEventHandler,
+    useContext,
+    useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import {
     SignUpLink,
@@ -22,6 +28,7 @@ import { useInput } from "../../hooks/useInput.hook";
 import { Loading } from "../../components/Loading/Loading.component";
 import Logo from "../../assets/logo-secondary-2.svg";
 import { track } from "../../utils/functions/track";
+import { CustomError } from "../../utils/classes/CustomError";
 
 export const SignUp: React.FC = () => {
     const { setUser, setUserToken } = useContext(UserContext);
@@ -34,7 +41,7 @@ export const SignUp: React.FC = () => {
     const goToMain = () => navigate(ROUTES.main);
     const goToSignIn = () => navigate(ROUTES.signIn);
 
-    const onSignUp = (data) => {
+    const onSignUp = (data: any) => {
         const { user, token } = data;
         if (user) setUser(user);
         if (token) setUserToken(token);
@@ -42,8 +49,8 @@ export const SignUp: React.FC = () => {
         goToMain();
     };
 
-    const [inputError, setInputError] = useState(false);
-    const handleError = (error) => {
+    const [inputError, setInputError] = useState<string>("");
+    const handleError = (error: CustomError) => {
         if (error.type === "invalid_input") setInputError(error.message);
     };
 
@@ -51,7 +58,7 @@ export const SignUp: React.FC = () => {
         onSuccess: onSignUp,
         onError: handleError,
     });
-    const onSubmit = (event) => {
+    const onSubmit: MouseEventHandler = (event) => {
         event.preventDefault();
         submit({ name, email, password });
     };

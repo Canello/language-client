@@ -45,14 +45,14 @@ export const SignUpButton = styled(Button)`
     width: 100%;
 `;
 
-export const SignUpText = styled.p`
+export const SignUpText = styled.span`
     display: inline;
     font-size: 14px;
     font-weight: normal;
     color: var(--neutral-color-1);
 `;
 
-export const SignUpLink = styled.p`
+export const SignUpLink = styled.span`
     display: inline;
     font-size: 14px;
     font-weight: bold;

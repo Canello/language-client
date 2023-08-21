@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const LoadingStyled = styled.div`
+interface ILoadingStyled {
+    size: number;
+    thickness: number;
+}
+export const LoadingStyled = styled.div<ILoadingStyled>`
     width: ${({ size }) => size}px;
     height: ${({ size }) => size}px;
     border-radius: 100%;

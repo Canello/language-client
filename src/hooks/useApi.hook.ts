@@ -1,7 +1,13 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/user.context";
 
-export const useApi = (service, config = {}) => {
+interface IConfig {
+    initialData?: any;
+    onSuccess?: Function;
+    onError?: Function;
+}
+
+export const useApi = (service: Function, config: IConfig = {}) => {
     // Need user token to fetch endpoints that require authorization
     const userToken = useContext(UserContext)?.userToken;
 
@@ -13,16 +19,16 @@ export const useApi = (service, config = {}) => {
     // States
     const [data, setData] = useState(initialData);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<any>(null);
 
     // Fetch function
-    const fetchData = async (...args) => {
+    const fetchData = async (...args: Array<any>) => {
         try {
             setLoading(true);
             const resData = await service(...args, userToken);
             setData(resData);
             onSuccess(resData);
-        } catch (error) {
+        } catch (error: any) {
             setError(error);
             onError(error);
         } finally {

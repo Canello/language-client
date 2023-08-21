@@ -10,7 +10,7 @@ import {
 } from "./PasswordForgotten.styles";
 import { useInput } from "../../hooks/useInput.hook";
 import { Spacer } from "../../components/Spacer/Spacer.component";
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { Input } from "../../components/Input/Input.component";
 import { useApi } from "../../hooks/useApi.hook";
 import { requestPasswordResetLink } from "../../services/auth.service";
@@ -22,7 +22,7 @@ export const PasswordForgotten: React.FC = () => {
 
     const [fetchRequestPasswordResetLink] = useApi(requestPasswordResetLink);
 
-    const onSubmit = (event) => {
+    const onSubmit: MouseEventHandler = (event) => {
         event.preventDefault();
         if (!email) return;
         fetchRequestPasswordResetLink(email);

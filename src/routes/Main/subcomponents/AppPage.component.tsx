@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
     AppPageStyled,
     AudioButtonContainer,
@@ -16,7 +16,7 @@ import { ChatBox } from "./ChatBox.component";
 import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
 import { track } from "../../../utils/functions/track";
 
-export const AppPage = () => {
+export const AppPage: React.FC = () => {
     const [isShowingModal, setIsShowingModal] = useState(false);
     const showModal = () => setIsShowingModal(true);
     const closeModal = () => setIsShowingModal(false);

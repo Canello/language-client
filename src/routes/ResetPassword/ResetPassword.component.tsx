@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
     AlertText,
@@ -18,6 +18,7 @@ import { useApi } from "../../hooks/useApi.hook";
 import { changePassword } from "../../services/auth.service";
 import { Loading } from "../../components/Loading/Loading.component";
 import Logo from "../../assets/logo-secondary-2.svg";
+import { CustomError } from "../../utils/classes/CustomError";
 
 export const ResetPassword: React.FC = () => {
     const [newPassword, onChangeNewPassword] = useInput();
@@ -29,13 +30,13 @@ export const ResetPassword: React.FC = () => {
     const navigate = useNavigate();
     const goToSignIn = () => navigate(ROUTES.signIn);
 
-    const onSubmit = (event) => {
+    const onSubmit: MouseEventHandler = (event) => {
         event.preventDefault();
         fetchChangePassword(resetToken, newPassword);
     };
 
-    const [inputError, setInputError] = useState(false);
-    const handleError = (error) => {
+    const [inputError, setInputError] = useState<string>("");
+    const handleError = (error: CustomError) => {
         if (error.type === "invalid_input" || error.type === "expired")
             setInputError(error.message);
     };

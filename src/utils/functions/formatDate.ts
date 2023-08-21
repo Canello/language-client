@@ -1,4 +1,4 @@
-export const formatDate = (dateString) => {
+export const formatDate = (dateString: string) => {
     const date = new Date(dateString);
 
     const day = ensureTwoDigits(date.getDate());
@@ -8,5 +8,5 @@ export const formatDate = (dateString) => {
     return day + "/" + month + "/" + year;
 };
 
-export const ensureTwoDigits = (num) =>
+export const ensureTwoDigits = (num: number) =>
     String(num).length === 1 ? "0" + num : String(num);

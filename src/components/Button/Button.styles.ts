@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
 const HEIGHT = {
@@ -6,7 +7,10 @@ const HEIGHT = {
     large: 40,
 };
 
-export const BaseButton = styled.button`
+interface IBaseButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+    size: "small" | "medium" | "large";
+}
+export const BaseButton = styled.button<IBaseButton>`
     display: flex;
     justify-content: center;
     align-items: center;

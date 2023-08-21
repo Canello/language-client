@@ -33,7 +33,10 @@ export const Minimize = styled.img`
     }
 `;
 
-export const Maximize = styled(Minimize)`
+interface IMaximize {
+    isMinimized: boolean;
+}
+export const Maximize = styled(Minimize)<IMaximize>`
     background: none;
     transform: ${({ isMinimized }) =>
         isMinimized ? "rotate(90deg)" : "rotate(0deg)"};
@@ -46,7 +49,11 @@ export const H4 = styled.h4`
     font-weight: 400;
 `;
 
-export const Box = styled.div`
+interface IBox {
+    isMinimized: boolean;
+    isActive: boolean;
+}
+export const Box = styled.div<IBox>`
     display: flex;
     width: 100%;
     min-height: ${({ isMinimized }) => (isMinimized ? "0" : "120px")};
@@ -76,7 +83,10 @@ export const Box = styled.div`
     }
 `;
 
-export const Text = styled.p`
+interface IText {
+    isMinimized: boolean;
+}
+export const Text = styled.p<IText>`
     white-space: pre-wrap;
     font-size: 16px;
     font-weight: 400;

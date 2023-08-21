@@ -1,8 +1,8 @@
 import { CustomError } from "../utils/classes/CustomError";
 import { API_ADDRESS } from "../utils/constants";
 
-export const chat = async (messages, userToken) => {
-    let res = await fetch(API_ADDRESS + "/chat", {
+export const chat = async (messages: Array<Message>, userToken: string) => {
+    const res = await fetch(API_ADDRESS + "/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -12,8 +12,8 @@ export const chat = async (messages, userToken) => {
             messages,
         }),
     });
-    res = await res.json();
-    if (res.error) throw new CustomError(res.error);
+    const resJson = await res.json();
+    if (resJson.error) throw new CustomError(resJson.error);
 
-    return res.data.reply;
+    return resJson.data.reply;
 };

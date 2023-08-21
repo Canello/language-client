@@ -5,11 +5,12 @@ import { useApi } from "./useApi.hook";
 import { transcribe } from "../services/transcription.service";
 import { chat } from "../services/chat.service";
 import { ConversationMemory } from "../utils/classes/ConversationMemory";
+import { CustomError } from "../utils/classes/CustomError";
 
-export const useConversation = (onCreditsEnd) => {
+export const useConversation = (onCreditsEnd: Function) => {
     const messages = useRef(new ConversationMemory());
 
-    const onError = (error) => {
+    const onError = (error: CustomError) => {
         if (error.type === "no_credits") onCreditsEnd();
     };
 
@@ -76,7 +77,7 @@ export const useConversation = (onCreditsEnd) => {
     };
 };
 
-function parseGptResponse(str) {
+function parseGptResponse(str: string) {
     try {
         let { corrections, response } = JSON.parse(str);
         return { corrections, response };

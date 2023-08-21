@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import {
     Box,
     ChatBoxStyled,
@@ -14,7 +14,13 @@ import { Spacer } from "../../../components/Spacer/Spacer.component";
 import { Loading } from "../../../components/Loading/Loading.component";
 import MinimizeIcon from "../../../assets/minimize.svg";
 
-export const ChatBox = ({
+interface IChatBoxProps {
+    label?: string;
+    isLoading?: boolean;
+    isActive?: boolean;
+}
+
+export const ChatBox: React.FC<PropsWithChildren<IChatBoxProps>> = ({
     label,
     isLoading,
     isActive,
