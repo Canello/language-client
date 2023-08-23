@@ -9,7 +9,9 @@ describe("PasswordForgotten", () => {
     const spyFetchRequestPasswordResetLink = jest.fn(() => {});
 
     beforeEach(() => {
-        useApi.mockImplementation(() => [spyFetchRequestPasswordResetLink]);
+        (useApi as jest.Mock).mockImplementation(() => [
+            spyFetchRequestPasswordResetLink,
+        ]);
     });
 
     it("should render without errors", async () => {

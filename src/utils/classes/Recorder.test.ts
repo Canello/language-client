@@ -1,6 +1,8 @@
 import { Recorder } from "./Recorder";
 
 global.MediaRecorder = class MediaRecorder {
+    toCallOnStop: Function;
+
     constructor() {
         this.toCallOnStop = () => {};
     }
@@ -11,10 +13,10 @@ global.MediaRecorder = class MediaRecorder {
         this.toCallOnStop();
     }
 
-    addEventListener(listenTo, func) {
+    addEventListener(listenTo: any, func: Function) {
         this.toCallOnStop = func;
     }
-};
+} as any;
 
 const makeNavigator = (isError = false) => {
     if (isError) {
@@ -24,7 +26,7 @@ const makeNavigator = (isError = false) => {
                     throw new Error("Declined audio permission.");
                 },
             },
-        };
+        } as any;
     } else {
         global.navigator = {
             mediaDevices: {
@@ -34,7 +36,7 @@ const makeNavigator = (isError = false) => {
                     };
                 },
             },
-        };
+        } as any;
     }
 };
 
@@ -84,7 +86,7 @@ describe("Recorder class", () => {
         }
     });
 
-    it("should should not throw an error if the argument object is missing", async () => {
+    it("should not throw an error if the argument object is missing", async () => {
         const recorder = new Recorder();
 
         makeNavigator();

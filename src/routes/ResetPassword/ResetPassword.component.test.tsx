@@ -1,4 +1,4 @@
-import { act, findByAltText, render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { ResetPassword } from "./ResetPassword.component";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,12 @@ jest.mock("react-router-dom", () => {
     };
 });
 jest.mock("../../hooks/useApi.hook");
-const makeUseApi = ({ fetchFn = () => {}, data = {}, isLoading = false }) => {
-    return (service, options = {}) => {
+const makeUseApi = ({
+    fetchFn = () => {},
+    data = {},
+    isLoading = false,
+}: any) => {
+    return (service: any, options: any = {}) => {
         const fn = () => {
             const [data, error] = fetchFn();
             if (data && options.onSuccess) options.onSuccess(data);
@@ -29,7 +33,7 @@ const makeUseApi = ({ fetchFn = () => {}, data = {}, isLoading = false }) => {
 
 describe("ResetPassword", () => {
     beforeEach(() => {
-        useApi.mockImplementation(makeUseApi({}));
+        (useApi as jest.Mock).mockImplementation(makeUseApi({}));
     });
 
     it("should render without errors", async () => {
@@ -40,7 +44,9 @@ describe("ResetPassword", () => {
     });
 
     it("should display loader while fetching", async () => {
-        useApi.mockImplementation(makeUseApi({ isLoading: true }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ isLoading: true })
+        );
         render(<ResetPassword />);
 
         const loaderElement = screen.getByTestId("LoadingStyled");
@@ -52,7 +58,9 @@ describe("ResetPassword", () => {
             type: "invalid_input",
             message: "Some message.",
         };
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [null, err] })
+        );
         render(<ResetPassword />);
 
         const newPasswordInputElement = screen.getByLabelText("Nova senha");
@@ -74,7 +82,9 @@ describe("ResetPassword", () => {
             type: "expired",
             message: "Some message.",
         };
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [null, err] })
+        );
         render(<ResetPassword />);
 
         const newPasswordInputElement = screen.getByLabelText("Nova senha");
@@ -96,7 +106,9 @@ describe("ResetPassword", () => {
             type: "some-unknown-type-of-error",
             message: "Some message.",
         };
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [null, err] })
+        );
         render(<ResetPassword />);
 
         const newPasswordInputElement = screen.getByLabelText("Nova senha");
@@ -115,9 +127,11 @@ describe("ResetPassword", () => {
     });
 
     it("should go to sign in page if password is successfully reseted", async () => {
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [{}, null] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [{}, null] })
+        );
         const spyNavigate = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
+        (useNavigate as jest.Mock).mockImplementation(() => spyNavigate);
         render(<ResetPassword />);
 
         const newPasswordInputElement = screen.getByLabelText("Nova senha");

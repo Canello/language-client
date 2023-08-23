@@ -2,8 +2,8 @@ import { Speaker } from "./Speaker";
 
 jest.mock("easy-speech", () => {
     return {
-        init: () => new Promise((resolve) => resolve()),
-        speak: () => new Promise((resolve) => resolve()),
+        init: () => new Promise((resolve) => resolve("")),
+        speak: () => new Promise((resolve) => resolve("")),
         cancel: () => "ratoo",
         voices: () => [{}],
     };
@@ -15,7 +15,7 @@ describe("Speaker class", () => {
         const spyOnStop = jest.fn(() => {});
         const speaker = new Speaker({ onSpeak: spyOnSpeak, onStop: spyOnStop });
 
-        await speaker.speak();
+        await speaker.speak("");
         expect(spyOnSpeak).toHaveBeenCalledTimes(1);
         expect(spyOnStop).toBeCalledTimes(1);
     });
@@ -36,7 +36,7 @@ describe("Speaker class", () => {
         ];
 
         for (let speaker of speakers) {
-            speaker.speak();
+            speaker.speak("");
             speaker.stop();
         }
     });

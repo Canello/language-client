@@ -5,7 +5,7 @@ import { useConversation } from "../../../hooks/useConversation.hook";
 jest.mock("react-dom", () => {
     return {
         ...jest.requireActual("react-dom"),
-        createPortal: (el) => el,
+        createPortal: (el: any) => el,
     };
 });
 const makeUseConversation = ({
@@ -39,7 +39,9 @@ jest.mock("../../../hooks/useConversation.hook");
 
 describe("AppPage", () => {
     beforeEach(() => {
-        useConversation.mockImplementation(makeUseConversation({}));
+        (useConversation as jest.Mock).mockImplementation(
+            makeUseConversation({})
+        );
     });
 
     it("should render without errors", async () => {
@@ -50,7 +52,7 @@ describe("AppPage", () => {
     });
 
     it("should show a tip warning about mic permission if user has declined it", async () => {
-        useConversation.mockImplementation(
+        (useConversation as jest.Mock).mockImplementation(
             makeUseConversation({ hasDeclinedRecordingPermission: true })
         );
         render(<AppPage />);
@@ -62,7 +64,7 @@ describe("AppPage", () => {
     });
 
     it("should show a tip prompting the user to finish the audio when they are being recorded", async () => {
-        useConversation.mockImplementation(
+        (useConversation as jest.Mock).mockImplementation(
             makeUseConversation({ isRecording: true })
         );
         render(<AppPage />);

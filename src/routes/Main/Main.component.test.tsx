@@ -16,7 +16,7 @@ jest.mock("./subcomponents/LandingPage.component", () => {
 describe("Main", () => {
     it("should render AppPage if user is logged in", async () => {
         render(
-            <UserContext.Provider value={{ user: {} }}>
+            <UserContext.Provider value={{ user: {} } as any}>
                 <Main />
             </UserContext.Provider>
         );
@@ -28,7 +28,7 @@ describe("Main", () => {
 
     it("should render LandingPage if user is not logged in", async () => {
         render(
-            <UserContext.Provider value={{ user: null }}>
+            <UserContext.Provider value={{ user: null } as any}>
                 <Main />
             </UserContext.Provider>
         );

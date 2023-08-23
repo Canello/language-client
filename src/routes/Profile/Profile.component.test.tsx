@@ -16,7 +16,9 @@ describe("Profile", () => {
     it("should render without errors", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: { isActive: false } }}>
+                <UserContext.Provider
+                    value={{ user: { isActive: false } } as any}
+                >
                     <Profile />
                 </UserContext.Provider>
             </BrowserRouter>
@@ -29,7 +31,9 @@ describe("Profile", () => {
     it("should render expiration date if user is active, and shouldn't render buy button", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: { isActive: true } }}>
+                <UserContext.Provider
+                    value={{ user: { isActive: true } } as any}
+                >
                     <Profile />
                 </UserContext.Provider>
             </BrowserRouter>
@@ -48,7 +52,9 @@ describe("Profile", () => {
     it("should render buy button if user is not active, and shouldn't render expiration date", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: { isActive: false } }}>
+                <UserContext.Provider
+                    value={{ user: { isActive: false } } as any}
+                >
                     <Profile />
                 </UserContext.Provider>
             </BrowserRouter>
@@ -67,11 +73,13 @@ describe("Profile", () => {
     it("should log the user out when logout is clicked", async () => {
         const spyNavigate = jest.fn(() => {});
         const spyLogout = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
+        (useNavigate as jest.Mock).mockImplementation(() => spyNavigate);
         render(
             <BrowserRouter>
                 <UserContext.Provider
-                    value={{ user: { isActive: false }, logout: spyLogout }}
+                    value={
+                        { user: { isActive: false }, logout: spyLogout } as any
+                    }
                 >
                     <Profile />
                 </UserContext.Provider>

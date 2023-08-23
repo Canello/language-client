@@ -43,7 +43,7 @@ describe("LandingPage", () => {
                 "trackCustom",
                 "LandingPageTestButton"
             );
-            track.mockClear();
+            (track as jest.Mock).mockClear();
 
             expect(mockNavigate).toHaveBeenCalledTimes(1);
             expect(mockNavigate).toHaveBeenCalledWith(ROUTES.signUp);

@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 jest.mock("react-dom", () => {
     return {
         ...jest.requireActual("react-dom"),
-        createPortal: (el) => el,
+        createPortal: (el: any) => el,
     };
 });
 
@@ -14,7 +14,7 @@ describe("Navbar", () => {
     it("should render without errors", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: {} }}>
+                <UserContext.Provider value={{ user: {} } as any}>
                     <Navbar />
                 </UserContext.Provider>
             </BrowserRouter>
@@ -27,7 +27,7 @@ describe("Navbar", () => {
     it("should display sign in button when the user is not logged in, and shouldn't display profile link", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: null }}>
+                <UserContext.Provider value={{ user: null } as any}>
                     <Navbar />
                 </UserContext.Provider>
             </BrowserRouter>
@@ -44,7 +44,7 @@ describe("Navbar", () => {
     it("should display profile link when the user is logged in, and shouldn't display sign in button", async () => {
         render(
             <BrowserRouter>
-                <UserContext.Provider value={{ user: {} }}>
+                <UserContext.Provider value={{ user: {} } as any}>
                     <Navbar />
                 </UserContext.Provider>
             </BrowserRouter>

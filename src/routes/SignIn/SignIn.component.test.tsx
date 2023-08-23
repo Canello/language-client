@@ -13,8 +13,12 @@ jest.mock("react-router-dom", () => {
     };
 });
 jest.mock("../../hooks/useApi.hook");
-const makeUseApi = ({ fetchFn = () => {}, data = {}, isLoading = false }) => {
-    return (service, options = {}) => {
+const makeUseApi = ({
+    fetchFn = () => {},
+    data = {},
+    isLoading = false,
+}: any) => {
+    return (service: any, options: any = {}) => {
         const fn = () => {
             const [responseData, responseError] = fetchFn();
             if (responseData && options.onSuccess)
@@ -29,7 +33,9 @@ const makeUseApi = ({ fetchFn = () => {}, data = {}, isLoading = false }) => {
 describe("SignIn", () => {
     const renderSignIn = () =>
         render(
-            <UserContext.Provider value={{ user: null, setUser: () => {} }}>
+            <UserContext.Provider
+                value={{ user: null, setUser: () => {} } as any}
+            >
                 <SignIn />
             </UserContext.Provider>
         );
@@ -48,7 +54,7 @@ describe("SignIn", () => {
     };
 
     beforeEach(() => {
-        useApi.mockImplementation(makeUseApi({}));
+        (useApi as jest.Mock).mockImplementation(makeUseApi({}));
     });
 
     it("should render without errors", async () => {
@@ -60,7 +66,9 @@ describe("SignIn", () => {
 
     it("should display error message if error of type invalid_input is received", async () => {
         const err = { type: "invalid_input", message: "Some message." };
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [null, err] })
+        );
         renderSignIn();
 
         await act(async () => {
@@ -73,7 +81,9 @@ describe("SignIn", () => {
 
     it("shouldn't display error message if an error with type other than invalid_input is received", async () => {
         const err = { type: "some_error_type", message: "Some message." };
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [null, err] }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [null, err] })
+        );
         renderSignIn();
 
         await act(async () => {
@@ -87,7 +97,7 @@ describe("SignIn", () => {
 
     it("should go to password forgotten route if user says she has forgotten its password", async () => {
         const spyNavigate = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
+        (useNavigate as jest.Mock).mockImplementation(() => spyNavigate);
         renderSignIn();
 
         const forgotPasswordLinkElement =
@@ -100,7 +110,7 @@ describe("SignIn", () => {
 
     it("should go to sign up route if user clicks to do so", async () => {
         const spyNavigate = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
+        (useNavigate as jest.Mock).mockImplementation(() => spyNavigate);
         renderSignIn();
 
         const signUpLinkElement = screen.getByText(/Cadastre-se/i);
@@ -112,8 +122,10 @@ describe("SignIn", () => {
 
     it("should go to the main route if user successfully logs in", async () => {
         const spyNavigate = jest.fn(() => {});
-        useNavigate.mockImplementation(() => spyNavigate);
-        useApi.mockImplementation(makeUseApi({ fetchFn: () => [{}, null] }));
+        (useNavigate as jest.Mock).mockImplementation(() => spyNavigate);
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ fetchFn: () => [{}, null] })
+        );
         renderSignIn();
 
         await act(async () => {
@@ -125,7 +137,9 @@ describe("SignIn", () => {
     });
 
     it("should display loader while data is being loaded", async () => {
-        useApi.mockImplementation(makeUseApi({ isLoading: true }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ isLoading: true })
+        );
         renderSignIn();
 
         const loaderElement = screen.getByTestId("LoadingStyled");
@@ -133,7 +147,9 @@ describe("SignIn", () => {
     });
 
     it("shouldn't display loader when data is not being loaded", async () => {
-        useApi.mockImplementation(makeUseApi({ isLoading: false }));
+        (useApi as jest.Mock).mockImplementation(
+            makeUseApi({ isLoading: false })
+        );
         renderSignIn();
 
         const loaderElement = screen.queryByTestId("LoadingStyled");

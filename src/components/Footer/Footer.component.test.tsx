@@ -5,7 +5,7 @@ import { Footer } from "./Footer.component";
 jest.mock("react-dom", () => {
     return {
         ...jest.requireActual("react-dom"),
-        createPortal: (el) => el,
+        createPortal: (el: any) => el,
     };
 });
 

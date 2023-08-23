@@ -5,7 +5,7 @@ import { FreeTestIsOverModal } from "./FreeTestIsOverModal.component";
 jest.mock("react-dom", () => {
     return {
         ...jest.requireActual("react-dom"),
-        createPortal: (el) => el,
+        createPortal: (el: any) => el,
     };
 });
 const mockOpenPayment = jest.fn(() => {});
@@ -17,7 +17,7 @@ jest.mock("../../../hooks/usePayment.hook", () => {
 
 describe("FreeTestIsOverModal", () => {
     it("should render without errors", async () => {
-        render(<FreeTestIsOverModal />);
+        render(<FreeTestIsOverModal isShowing={true} onClose={() => {}} />);
 
         const freeTestIsOverModalElement = screen.getByTestId(
             "FreeTestIsOverModalStyled"
@@ -26,7 +26,7 @@ describe("FreeTestIsOverModal", () => {
     });
 
     it("should try to open payment tab when BuyButton is clicked", async () => {
-        render(<FreeTestIsOverModal />);
+        render(<FreeTestIsOverModal isShowing={true} onClose={() => {}} />);
 
         const buyButtonElement = screen.getByText(/Comprar acesso/i);
         user.click(buyButtonElement);
